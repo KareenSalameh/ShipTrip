@@ -4,17 +4,60 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#B0E3F3"
+    android:background="#FFFFFF"
     tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="408dp"
+        android:layout_height="521dp"
+        android:layout_marginTop="44dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/s" />
+
+    <Button
+        android:id="@+id/Loginbtn"
+        android:layout_width="111dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/btn1"
+        android:fontFamily="@font/arvoregular"
+        android:text="Login"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/Signupbtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/Signupbtn"
+        android:layout_width="113dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="56dp"
+        android:background="@drawable/btn1"
+        android:fontFamily="@font/arvoregular"
+        android:text="Signup"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="56dp"
+        android:fontFamily="@font/arvoregular"
+        android:text="Welcome To ShipTrip App"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

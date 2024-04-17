@@ -1,0 +1,25 @@
+package com.example.androidapp2024
+
+import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.widget.TextView
+
+class RegisterActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_register)
+
+        // Find the TextView
+        val textViewRegister: TextView = findViewById(R.id.textViewLogin)
+
+        // Set OnClickListener for the TextView
+        textViewRegister.setOnClickListener {
+            // Create an Intent to navigate to the LoginActivity
+            val intent = Intent(this, LoginActivity::class.java)
+
+            // Start the LoginActivity
+            startActivity(intent)
+        }
+    }
+}
