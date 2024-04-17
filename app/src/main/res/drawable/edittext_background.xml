@@ -1,0 +1,9 @@
+<!-- edittext_background.xml -->
+<shape android:shape="rectangle"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <solid android:color="#FFFFFF" /> <!-- Background color -->
+    <stroke android:color="#BB6962" android:width="2dp" /> <!-- Border -->
+    <corners android:radius="10dp" /> <!-- Border radius, match with button's radius -->
+
+</shape>
