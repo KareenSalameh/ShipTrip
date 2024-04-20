@@ -4,97 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/material_dynamic_neutral_variant90"
     tools:context=".AddUserActivity">
-
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="134dp"
-        android:layout_height="126dp"
-        android:layout_marginBottom="32dp"
-        android:layout_marginTop="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/textInputLayoutFullName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/sym_def_app_icon" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutFullName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextFullName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Full Name" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutEmail"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutFullName">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Email" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutPassword"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutEmail">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Password" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutAge"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutPassword">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextAge"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Confirm Password" />
-
-    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/buttonSave"
@@ -104,6 +14,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginBottom="16dp"
         android:text="Save"
+        android:background="@drawable/btn1"
         android:textColorHighlight="#354F91"
         android:textColorHint="@color/white"
         android:textColorLink="#354F91"
@@ -121,18 +32,105 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:text="Cancel"
+        android:background="@drawable/btn1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- Optional TextViews for additional messages -->
+
     <TextView
-        android:id="@+id/textViewOptional1"
-        android:layout_width="355dp"
-        android:layout_height="188dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="72dp"
-        android:text="Optional message 1"
+        android:id="@+id/tvDescription"
+        android:layout_width="379dp"
+        android:layout_height="136dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="19dp"
+        android:text="Item description"
+
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutAge" />
+        app:layout_constraintTop_toBottomOf="@+id/tvItemName" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/tvFROM"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="10dp"
+        android:hint="FROM"
+        app:layout_constraintEnd_toStartOf="@+id/tvTextTO"
+        app:layout_constraintHorizontal_bias="0.036"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
+
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/tvTextTO"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="50dp"
+        android:hint="TO"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvFROM"
+        app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tvItemName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="80dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextFullName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Item" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/faCameraButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="42dp"
+        android:layout_marginEnd="11dp"
+        android:clickable="true"
+        android:contentDescription="Take a photo"
+        app:layout_constraintEnd_toStartOf="@+id/tvPhotoUpload"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvFROM"
+        app:srcCompat="@android:drawable/ic_menu_camera" />
+
+
+    <TextView
+        android:id="@+id/tvPhotoUpload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="76dp"
+        android:text="Upload photo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.394"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvFROM" />
+
+    <TextView
+        android:id="@+id/tvTitlePost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:text="New ShipTrip"
+        android:textSize="30dp"
+        android:fontFamily="@font/arvoregular"
+        app:layout_constraintBottom_toTopOf="@+id/tvItemName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

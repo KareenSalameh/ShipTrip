@@ -8,6 +8,12 @@ import android.widget.EditText
 class AddUserActivity : AppCompatActivity() {
 
     private lateinit var nameEditText: EditText
+    private lateinit var titlePost: EditText
+    private lateinit var fromText: EditText
+    private lateinit var camerafa: EditText
+    private lateinit var description: EditText
+    private lateinit var toText: EditText
+    private lateinit var uploadPhotoText: EditText
     private lateinit var idEditText: EditText
     private lateinit var saveButton: Button
     private lateinit var cancelButton: Button
@@ -24,6 +30,12 @@ class AddUserActivity : AppCompatActivity() {
         idEditText = findViewById(R.id.editTextEmail) // Assuming ID is the email here
         saveButton = findViewById(R.id.buttonSave)
         cancelButton = findViewById(R.id.buttonCancel)
+        titlePost = findViewById(R.id.tvTitlePost)
+        fromText = findViewById(R.id.tvFROM)
+        toText = findViewById(R.id.tvTextTO)
+        uploadPhotoText = findViewById(R.id.tvPhotoUpload)
+        camerafa = findViewById(R.id.faCameraButton)
+        description = findViewById(R.id.tvDescription)
 
         cancelButton.setOnClickListener {
             finish()
