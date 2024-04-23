@@ -1,4 +1,4 @@
-package com.example.androidapp2024
+package com.example.androidapp2024.Modules.User
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,6 +12,7 @@ import android.widget.ListView
 import android.widget.TextView
 import com.example.androidapp2024.Model.Model
 import com.example.androidapp2024.Model.User
+import com.example.androidapp2024.R
 
 class ListActivity : AppCompatActivity() {
 

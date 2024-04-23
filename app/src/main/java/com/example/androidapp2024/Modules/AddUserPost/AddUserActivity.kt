@@ -1,9 +1,10 @@
-package com.example.androidapp2024
+package com.example.androidapp2024.Modules.AddUserPost
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import com.example.androidapp2024.R
 
 class AddUserActivity : AppCompatActivity() {
 
