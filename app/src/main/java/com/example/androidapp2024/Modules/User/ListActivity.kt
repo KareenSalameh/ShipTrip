@@ -12,17 +12,24 @@ import android.widget.ListView
 import android.widget.TextView
 import com.example.androidapp2024.Model.Model
 import com.example.androidapp2024.Model.User
+import com.example.androidapp2024.Modules.User.Adapter.UsersRecyclerAdapter
 import com.example.androidapp2024.R
 
 class ListActivity : AppCompatActivity() {
 
     var usersListView: ListView? = null
     var users: List<User>? = null
+   // var adapter: UsersRecyclerAdapter?= null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list)
 
-        users = Model.instance.getAllUsers()
+        Model.instance.getAllUsers { users ->
+            this.users = users
+//            adapter?.users = users
+//            adapter?.notifyDataSetChanged()
+        }
 
         usersListView = findViewById(R.id.UserListView)
         usersListView?.adapter = UsersListAdapter(users)

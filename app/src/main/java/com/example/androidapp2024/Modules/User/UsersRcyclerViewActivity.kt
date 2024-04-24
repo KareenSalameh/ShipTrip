@@ -19,18 +19,29 @@ class UsersRcyclerViewActivity : AppCompatActivity() {
 
     var usersRcyclerView: RecyclerView? = null
     var users: List<User>? = null
-
+    var adapter: UsersRecyclerAdapter?= null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_users_rcycler_view)
 
-        users = Model.instance.getAllUsers()
+        Model.instance.getAllUsers { users ->
+            this.users=users
+            adapter?.users = users
+            adapter?.notifyDataSetChanged()
+        }
+//            (object: Model.GetAllUserListener {
+//                override fun onComplete(users: List<User>) {
+//                    TODO("Not yet implemented")
+//                }
+//            })
+
+
         usersRcyclerView = findViewById(R.id.rvUserRcyclerList)
         usersRcyclerView?.setHasFixedSize(true)
         usersRcyclerView?.layoutManager = LinearLayoutManager(this)
 
-        val adapter = UsersRecyclerAdapter(users)
-        adapter.listener = object : OnItemClickedListener {
+        adapter = UsersRecyclerAdapter(users)
+        adapter?.listener = object : OnItemClickedListener {
             override fun OnItemClick(position: Int) {
                 Log.i("TAG", "Position CLicked $position")
             }
@@ -47,5 +58,14 @@ class UsersRcyclerViewActivity : AppCompatActivity() {
         fun OnItemClick(position: Int)//user
         fun onUserClicked(user: User?)
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Model.instance.getAllUsers { users ->
+            this.users=users
+            adapter?.users = users
+            adapter?.notifyDataSetChanged()
+        }
     }
 }

@@ -52,7 +52,12 @@ class AddUserFragment : Fragment() {
         saveButton?.setOnClickListener {
             val name = nameTextField?.text.toString()
             val id = idTextField?.text.toString()
-            val user = User(name, id, "", false)
+
+            val user = User(name,id,"", false)
+            Model.instance.addUser(user){
+                Navigation.findNavController(it).popBackStack(R.id.usersFragment, false)
+
+            }
         }
     }
 
