@@ -11,8 +11,9 @@ class Model private constructor() {
 
     init {
         for (i in 0..20){
-            val user = User("Name: $i", "ID: $i", "https://me.com/avatar.jpg", false, "Description: $i")
+            val user = User("Name: $i", "ID: $i", "https://me.com/avatar.jpg", false)
         users.add(user)
         }
     }
+
 }

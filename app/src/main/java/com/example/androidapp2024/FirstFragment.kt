@@ -5,29 +5,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 
 class FirstFragment : Fragment() {
-    var textView: TextView? = null
-    var title: String? = null
-    companion object {
-        const val TITLE = "TITLE"
-        fun newInstance(title: String) =
-            FirstFragment().apply {
-                arguments = Bundle().apply {
-                putString(TITLE,title)
-                }
-            }
-    }
+    private var textView: TextView? = null
+    private var title: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let{
-            title = it.getString(TITLE)
-        }
-    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -35,9 +22,18 @@ class FirstFragment : Fragment() {
         // Inflate the layout for this fragment
         val view =  inflater.inflate(R.layout.fragment_first, container, false)
 
+        val firstTitle = arguments?.let {
+            FirstFragmentArgs.fromBundle(it).TITLE
+        }
+
         textView = view.findViewById(R.id.tvFragmentTitle)
-        textView?.text = title?: "Please assign title"
+        textView?.text = firstTitle?: "Please assign title"
         // textView.text = "Some new title"
+
+        val backButton: Button = view.findViewById(R.id.btnFirstFragment)
+        backButton.setOnClickListener{
+            Navigation.findNavController(view).popBackStack()
+        }
         return view
     }
 

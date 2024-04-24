@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androidapp2024.Model.Model
@@ -32,6 +34,12 @@ class UsersFragment : Fragment() {
         adapter.listener = object : UsersRcyclerViewActivity.OnItemClickedListener {
             override fun OnItemClick(position: Int) {
                 Log.i("TAG", "Position CLicked $position")
+                val user = users?.get(position)
+                user?.let {
+                    val action = UsersFragmentDirections.actionUsersFragmentToFirstFragment(it.name)
+                    Navigation.findNavController(view).navigate(action)
+
+                }
             }
 
             override fun onUserClicked(user: User?) {
@@ -40,6 +48,12 @@ class UsersFragment : Fragment() {
 
         }
         usersRcyclerView?.adapter = adapter
+
+        val addUserButton: ImageButton = view.findViewById(R.id.ibtnAddUser)
+        //val action = UsersFragmentDirections.actionGlobalAddUserFragment4()
+        val action = Navigation.createNavigateOnClickListener(UsersFragmentDirections.actionGlobalAddUserFragment4())
+
+        addUserButton.setOnClickListener(action)
 
         return view
     }

@@ -56,10 +56,8 @@ class ListActivity : AppCompatActivity() {
             val nameTextView: TextView? = view?.findViewById(R.id.tvUserName)
             val idTextView: TextView? = view?.findViewById(R.id.tvUserID)
             val userCheckBox: CheckBox? = view?.findViewById(R.id.cbUserListRow)
-            val postdescription: TextView? = view?.findViewById(R.id.svUserPostDescription)
             nameTextView?.text = user?.name
             idTextView?.text = user?.id
-            postdescription?.text = user?.description
             userCheckBox?.apply {
                 isChecked = user?.isChecked ?: false
                 tag = position
