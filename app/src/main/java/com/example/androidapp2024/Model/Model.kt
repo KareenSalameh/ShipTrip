@@ -9,11 +9,5 @@ class Model private constructor() {
         val instance: Model = Model()
     }
 
-    init {
-        for (i in 0..20){
-            val user = User("Name: $i", "ID: $i", "https://me.com/avatar.jpg", false)
-        users.add(user)
-        }
-    }
 
 }
