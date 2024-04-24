@@ -7,7 +7,7 @@ import com.example.androidapp2024.Model.User
 import com.example.androidapp2024.Modules.User.UsersRcyclerViewActivity
 import com.example.androidapp2024.R
 
-class UsersRecyclerAdapter(var users: MutableList<User>?): RecyclerView.Adapter<UserViewHolder>(){
+class UsersRecyclerAdapter(var users: List<User>?): RecyclerView.Adapter<UserViewHolder>(){
 
     var listener: UsersRcyclerViewActivity.OnItemClickedListener?= null
     override fun getItemCount(): Int = users?.size ?: 0

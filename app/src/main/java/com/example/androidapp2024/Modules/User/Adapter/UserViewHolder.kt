@@ -11,7 +11,7 @@ import com.example.androidapp2024.R
 
 class UserViewHolder(val itemView: View,
                      val listener: UsersRcyclerViewActivity.OnItemClickedListener?,
-                     var users: MutableList<User>?): RecyclerView.ViewHolder(itemView){
+                     var users: List<User>?): RecyclerView.ViewHolder(itemView){
 
 
     var nameTextView: TextView? = null

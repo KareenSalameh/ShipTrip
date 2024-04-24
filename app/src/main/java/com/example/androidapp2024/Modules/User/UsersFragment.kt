@@ -17,7 +17,7 @@ import com.example.androidapp2024.R
 
 class UsersFragment : Fragment() {
     var usersRcyclerView: RecyclerView? = null
-    var users: MutableList<User>? = null
+    var users: List<User>? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -25,7 +25,7 @@ class UsersFragment : Fragment() {
         // Inflate the layout for this fragment
         val view =  inflater.inflate(R.layout.fragment_users, container, false)
 
-        users = Model.instance.users
+        users = Model.instance.getAllUsers()
         usersRcyclerView = view.findViewById(R.id.UserFragmentList)
         usersRcyclerView?.setHasFixedSize(true)
         usersRcyclerView?.layoutManager = LinearLayoutManager(context)

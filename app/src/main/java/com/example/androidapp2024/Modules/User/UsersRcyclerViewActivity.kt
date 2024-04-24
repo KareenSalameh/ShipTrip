@@ -18,13 +18,13 @@ import com.example.androidapp2024.R
 class UsersRcyclerViewActivity : AppCompatActivity() {
 
     var usersRcyclerView: RecyclerView? = null
-    var users: MutableList<User>? = null
+    var users: List<User>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_users_rcycler_view)
 
-        users = Model.instance.users
+        users = Model.instance.getAllUsers()
         usersRcyclerView = findViewById(R.id.rvUserRcyclerList)
         usersRcyclerView?.setHasFixedSize(true)
         usersRcyclerView?.layoutManager = LinearLayoutManager(this)

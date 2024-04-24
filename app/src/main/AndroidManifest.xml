@@ -38,7 +38,7 @@
             android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="false"></activity>
         <activity
             android:name=".Modules.User.ListActivity"
             android:exported="true" />

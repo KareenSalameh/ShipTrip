@@ -17,12 +17,12 @@ import com.example.androidapp2024.R
 class ListActivity : AppCompatActivity() {
 
     var usersListView: ListView? = null
-    var users: MutableList<User>? = null
+    var users: List<User>? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list)
 
-        users = Model.instance.users
+        users = Model.instance.getAllUsers()
 
         usersListView = findViewById(R.id.UserListView)
         usersListView?.adapter = UsersListAdapter(users)
@@ -32,7 +32,7 @@ class ListActivity : AppCompatActivity() {
         }
     }
 
-    class UsersListAdapter(val users: MutableList<User>?): BaseAdapter() {
+    class UsersListAdapter(val users: List<User>?): BaseAdapter() {
         override fun getCount(): Int = users?.size ?: 0
 
         override fun getItem(p0: Int): Any {
