@@ -2,12 +2,15 @@ package com.example.androidapp2024
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class MainHomeActivity2 : AppCompatActivity() {
     private var navController: NavController? = null
@@ -42,9 +45,7 @@ class MainHomeActivity2 : AppCompatActivity() {
                 else -> false
             }
         }
-//        navController?.let {
-//            NavigationUI.setupActionBarWithNavController(this, it)
-//        }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

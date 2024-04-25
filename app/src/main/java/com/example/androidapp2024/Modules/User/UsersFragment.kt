@@ -15,19 +15,27 @@ import com.example.androidapp2024.Model.Model
 import com.example.androidapp2024.Model.User
 import com.example.androidapp2024.Modules.User.Adapter.UsersRecyclerAdapter
 import com.example.androidapp2024.R
+import com.example.androidapp2024.databinding.FragmentUsersBinding
 
 class UsersFragment : Fragment() {
     var usersRcyclerView: RecyclerView? = null
     var users: List<User>? = null
     var adapter: UsersRecyclerAdapter?= null
     var progressBar: ProgressBar?= null
+
+    private var _binding:FragmentUsersBinding?= null
+    private val binding get() =  _binding !!
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        _binding = FragmentUsersBinding.inflate(inflater,container,false)
+        val view = binding.root
+
         // Inflate the layout for this fragment
-        val view =  inflater.inflate(R.layout.fragment_users, container, false)
-        progressBar = view.findViewById(R.id.progressBar)
+      //  val view =  inflater.inflate(R.layout.fragment_users, container, false)
+        progressBar = binding.progressBar //view.findViewById(R.id.progressBar)
 
         progressBar?.visibility = View.VISIBLE
 
@@ -39,7 +47,7 @@ class UsersFragment : Fragment() {
             progressBar?.visibility = View.GONE
 
         }
-        usersRcyclerView = view.findViewById(R.id.UserFragmentList)
+        usersRcyclerView = binding.UserFragmentList //view.findViewById(R.id.UserFragmentList)
         usersRcyclerView?.setHasFixedSize(true)
         usersRcyclerView?.layoutManager = LinearLayoutManager(context)
 
@@ -84,6 +92,12 @@ class UsersFragment : Fragment() {
             progressBar?.visibility = View.GONE
 
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        _binding = null
     }
 
 }
