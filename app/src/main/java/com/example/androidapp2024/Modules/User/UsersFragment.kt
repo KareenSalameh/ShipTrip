@@ -16,6 +16,8 @@ import com.example.androidapp2024.Model.User
 import com.example.androidapp2024.Modules.User.Adapter.UsersRecyclerAdapter
 import com.example.androidapp2024.R
 import com.example.androidapp2024.databinding.FragmentUsersBinding
+import android.content.Intent
+import com.example.androidapp2024.MainActivity
 
 class UsersFragment : Fragment() {
     var usersRcyclerView: RecyclerView? = null
@@ -62,7 +64,6 @@ class UsersFragment : Fragment() {
 
                 }
             }
-
             override fun onUserClicked(user: User?) {
                 Log.i("TAG", "USER $user")
             }
@@ -70,11 +71,10 @@ class UsersFragment : Fragment() {
         }
         usersRcyclerView?.adapter = adapter
 
-        val addUserButton: ImageButton = view.findViewById(R.id.ibtnAddUser)
+
+        //val addUserButton: ImageButton = view.findViewById(R.id.ibtnAddUser)
         //val action = UsersFragmentDirections.actionGlobalAddUserFragment4()
         val action = Navigation.createNavigateOnClickListener(UsersFragmentDirections.actionGlobalAddUserFragment4())
-
-        addUserButton.setOnClickListener(action)
 
         return view
     }
