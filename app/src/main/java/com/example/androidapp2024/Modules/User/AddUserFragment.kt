@@ -1,4 +1,4 @@
-package com.example.androidapp2024.Modules.AddUserPost
+package com.example.androidapp2024.Modules.User
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import com.example.androidapp2024.Model.Model
-import com.example.androidapp2024.Model.User
+import com.example.androidapp2024.Model.UserModel.UserFirestore
+import com.example.androidapp2024.Model.UserModel.User
 import com.example.androidapp2024.R
 import android.view.Menu
 import android.view.MenuInflater
@@ -47,15 +47,15 @@ class AddUserFragment : Fragment() {
         messageTextView?.text = ""
 
         cancelButton?.setOnClickListener {
-            Navigation.findNavController(it).popBackStack(R.id.usersFragment, false)
+            Navigation.findNavController(it).popBackStack(R.id.postsFragment, false)
         }
         saveButton?.setOnClickListener {
             val name = nameTextField?.text.toString()
             val id = idTextField?.text.toString()
 
             val user = User(name,id,"", false)
-            Model.instance.addUser(user){
-                Navigation.findNavController(it).popBackStack(R.id.usersFragment, false)
+            UserFirestore.instance.addUser(user){
+                Navigation.findNavController(it).popBackStack(R.id.postsFragment, false)
 
             }
         }

@@ -1,4 +1,4 @@
-package com.example.androidapp2024.Model
+package com.example.androidapp2024.Model.UserModel
 
 import android.content.Context
 import androidx.room.Entity
@@ -6,7 +6,6 @@ import androidx.room.PrimaryKey
 import com.example.androidapp2024.base.MyApplication
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FieldValue
-import java.lang.reflect.Field
 
 @Entity
 data class User(

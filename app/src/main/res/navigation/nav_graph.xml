@@ -3,17 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/usersFragment">
+    app:startDestination="@id/postsFragment">
 
-    <fragment
-        android:id="@+id/usersFragment"
-        android:name="com.example.androidapp2024.Modules.User.UsersFragment"
-        android:label="Users List Fragment"
-        tools:layout="@layout/fragment_users">
-        <action
-            android:id="@+id/action_usersFragment_to_firstFragment"
-            app:destination="@id/firstFragment" />
-    </fragment>
     <fragment
         android:id="@+id/firstFragment"
         android:name="com.example.androidapp2024.FirstFragment"
@@ -25,7 +16,23 @@
     </fragment>
     <fragment
         android:id="@+id/addUserFragment4"
-        android:name="com.example.androidapp2024.Modules.AddUserPost.AddUserFragment"
+        android:name="com.example.androidapp2024.Modules.User.AddUserFragment"
         android:label="Add User"
-        tools:layout="@layout/fragment_add_user" /><action android:id="@+id/action_global_addUserFragment4" app:destination="@id/addUserFragment4"/><action android:id="@+id/action_global_usersFragment" app:destination="@id/usersFragment"/>
+        tools:layout="@layout/fragment_add_user" /><action android:id="@+id/action_global_addUserFragment4" app:destination="@id/addUserFragment4"/>
+    <fragment
+        android:id="@+id/postsFragment"
+        android:name="com.example.androidapp2024.Modules.Posts.PostsFragment"
+        android:label="Posts list Fragment"
+        tools:layout="@layout/fragment_posts" >
+        <action
+            android:id="@+id/action_postsFragment_to_firstFragment"
+            app:destination="@id/firstFragment" />
+    </fragment>
+    <action android:id="@+id/action_global_postsFragment" app:destination="@id/postsFragment" />
+    <fragment
+        android:id="@+id/addPostFragment3"
+        android:name="com.example.androidapp2024.Modules.Posts.AddPostFragment"
+        android:label="fragment_add_post"
+        tools:layout="@layout/fragment_add_post" />
+    <action android:id="@+id/action_global_addPostFragment3" app:destination="@id/addPostFragment3" />
 </navigation>

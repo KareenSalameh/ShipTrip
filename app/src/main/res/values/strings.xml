@@ -2,4 +2,8 @@
     <string name="app_name">Android App 2024</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="pick_review_picture">Choose photo</string>
+    <string name="review_image">photo\n</string>
+    <string name="from">FROM</string>
+    <string name="To">TO\n</string>
 </resources>

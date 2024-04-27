@@ -1,4 +1,4 @@
-package com.example.androidapp2024
+package com.example.androidapp2024.Modules.Register
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,16 +8,15 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.ktx.Firebase
-import com.example.androidapp2024.Model.FirebaseModel
-import com.example.androidapp2024.Model.User
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.firestore
+import com.example.androidapp2024.Model.UserModel.UserFirebaseModel
+import com.example.androidapp2024.Model.UserModel.User
+import com.example.androidapp2024.Modules.Login.LoginActivity
+import com.example.androidapp2024.R
 
 class RegisterActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
-    private lateinit var firebaseModel: FirebaseModel
+    private lateinit var firebaseModel: UserFirebaseModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +24,7 @@ class RegisterActivity : AppCompatActivity() {
 
         // Initialize Firebase Auth
         auth = FirebaseAuth.getInstance()
-        firebaseModel = FirebaseModel()
+        firebaseModel = UserFirebaseModel()
 
         val registerButton: Button = findViewById(R.id.button3)
         registerButton.setOnClickListener {

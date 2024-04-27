@@ -3,7 +3,7 @@ package com.example.androidapp2024.Modules.User.Adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.androidapp2024.Model.User
+import com.example.androidapp2024.Model.UserModel.User
 import com.example.androidapp2024.Modules.User.UsersRcyclerViewActivity
 import com.example.androidapp2024.R
 

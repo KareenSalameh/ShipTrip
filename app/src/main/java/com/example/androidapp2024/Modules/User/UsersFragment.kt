@@ -6,18 +6,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
 import android.widget.ProgressBar
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.androidapp2024.Model.Model
-import com.example.androidapp2024.Model.User
+import com.example.androidapp2024.Model.UserModel.UserFirestore
+import com.example.androidapp2024.Model.UserModel.User
 import com.example.androidapp2024.Modules.User.Adapter.UsersRecyclerAdapter
-import com.example.androidapp2024.R
 import com.example.androidapp2024.databinding.FragmentUsersBinding
-import android.content.Intent
-import com.example.androidapp2024.MainActivity
 
 class UsersFragment : Fragment() {
     var usersRcyclerView: RecyclerView? = null
@@ -41,7 +37,7 @@ class UsersFragment : Fragment() {
 
         progressBar?.visibility = View.VISIBLE
 
-        Model.instance.getAllUsers { users ->
+        UserFirestore.instance.getAllUsers { users ->
             this.users = users
             adapter?.users = users
             adapter?.notifyDataSetChanged()
@@ -59,8 +55,8 @@ class UsersFragment : Fragment() {
                 Log.i("TAG", "Position CLicked $position")
                 val user = users?.get(position)
                 user?.let {
-                    val action = UsersFragmentDirections.actionUsersFragmentToFirstFragment(it.name)
-                    Navigation.findNavController(view).navigate(action)
+//                    val action = UsersFragmentDirections.actionUsersFragmentToFirstFragment(it.name)
+//                    Navigation.findNavController(view).navigate(action)
 
                 }
             }
@@ -74,7 +70,7 @@ class UsersFragment : Fragment() {
 
         //val addUserButton: ImageButton = view.findViewById(R.id.ibtnAddUser)
         //val action = UsersFragmentDirections.actionGlobalAddUserFragment4()
-        val action = Navigation.createNavigateOnClickListener(UsersFragmentDirections.actionGlobalAddUserFragment4())
+     //   val action = Navigation.createNavigateOnClickListener(UsersFragmentDirections.actionGlobalAddUserFragment4())
 
         return view
     }
@@ -84,7 +80,7 @@ class UsersFragment : Fragment() {
 
         progressBar?.visibility = View.VISIBLE
 
-        Model.instance.getAllUsers { users ->
+        UserFirestore.instance.getAllUsers { users ->
             this.users = users
             adapter?.users = users
             adapter?.notifyDataSetChanged()

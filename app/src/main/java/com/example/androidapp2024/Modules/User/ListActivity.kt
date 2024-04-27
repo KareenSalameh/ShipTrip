@@ -10,9 +10,8 @@ import android.widget.BaseAdapter
 import android.widget.CheckBox
 import android.widget.ListView
 import android.widget.TextView
-import com.example.androidapp2024.Model.Model
-import com.example.androidapp2024.Model.User
-import com.example.androidapp2024.Modules.User.Adapter.UsersRecyclerAdapter
+import com.example.androidapp2024.Model.UserModel.UserFirestore
+import com.example.androidapp2024.Model.UserModel.User
 import com.example.androidapp2024.R
 
 class ListActivity : AppCompatActivity() {
@@ -25,7 +24,7 @@ class ListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list)
 
-        Model.instance.getAllUsers { users ->
+        UserFirestore.instance.getAllUsers { users ->
             this.users = users
 //            adapter?.users = users
 //            adapter?.notifyDataSetChanged()

@@ -5,7 +5,7 @@ import android.view.View
 import android.widget.CheckBox
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.androidapp2024.Model.User
+import com.example.androidapp2024.Model.UserModel.User
 import com.example.androidapp2024.Modules.User.UsersRcyclerViewActivity
 import com.example.androidapp2024.R
 

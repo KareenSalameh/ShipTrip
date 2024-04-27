@@ -1,4 +1,4 @@
-package com.example.androidapp2024
+package com.example.androidapp2024.Modules.Login
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -9,13 +9,16 @@ import android.widget.EditText
 import android.widget.TextView
 import com.google.firebase.auth.FirebaseAuth
 import android.widget.Toast
+import com.example.androidapp2024.Modules.Feed.FeedActivity
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthInvalidUserException
-import com.example.androidapp2024.Model.FirebaseModel
+import com.example.androidapp2024.Model.UserModel.UserFirebaseModel
+import com.example.androidapp2024.R
+import com.example.androidapp2024.Modules.Register.RegisterActivity
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
-    private lateinit var firebaseModel: FirebaseModel
+    private lateinit var firebaseModel: UserFirebaseModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +51,7 @@ class LoginActivity : AppCompatActivity() {
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
                             // val user = auth.currentUser
-                            startActivity(Intent(this, MainHomeActivity2::class.java))
+                            startActivity(Intent(this, FeedActivity::class.java))
                             finish() // Close current activity
                         } else {
                             // Sign in failed

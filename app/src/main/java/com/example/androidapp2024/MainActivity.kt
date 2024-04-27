@@ -4,8 +4,9 @@ package com.example.androidapp2024
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
+import com.example.androidapp2024.Modules.Login.LoginActivity
+import com.example.androidapp2024.Modules.Register.RegisterActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
