@@ -27,6 +27,9 @@
         <action
             android:id="@+id/action_postsFragment_to_firstFragment"
             app:destination="@id/firstFragment" />
+        <action
+            android:id="@+id/action_postsFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <action android:id="@+id/action_global_postsFragment" app:destination="@id/postsFragment" />
     <fragment
@@ -35,4 +38,9 @@
         android:label="fragment_add_post"
         tools:layout="@layout/fragment_add_post" />
     <action android:id="@+id/action_global_addPostFragment3" app:destination="@id/addPostFragment3" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.androidapp2024.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" /><action android:id="@+id/action_global_profileFragment" app:destination="@id/profileFragment"/>
 </navigation>

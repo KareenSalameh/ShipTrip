@@ -11,7 +11,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnMaintabThree"
+        app:layout_constraintBottom_toTopOf="@+id/btnlogout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,35 +21,35 @@
     </FrameLayout>
 
     <Button
-        android:id="@+id/btnMaintabOne"
+        android:id="@+id/btnEditProfile"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Home"
 
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnMaintabTwo"
+        app:layout_constraintEnd_toStartOf="@+id/btnMyPosts"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/btnMaintabTwo"
+        android:id="@+id/btnMyPosts"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Two"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnMaintabThree"
+        app:layout_constraintEnd_toStartOf="@+id/btnlogout"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btnMaintabOne" />
+        app:layout_constraintStart_toEndOf="@+id/btnEditProfile" />
 
     <Button
-        android:id="@+id/btnMaintabThree"
+        android:id="@+id/btnlogout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Three"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnMaintabFour"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btnMaintabTwo" />
+        app:layout_constraintStart_toEndOf="@+id/btnMyPosts" />
 
     <Button
         android:id="@+id/btnMaintabFour"
@@ -59,7 +59,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btnMaintabThree" />
+        app:layout_constraintStart_toEndOf="@+id/btnlogout" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -46,6 +46,7 @@ class FeedActivity : AppCompatActivity() {
 
                 R.id.profile -> {
                     // Handle Profile item click
+                    navController?.navigate(R.id.action_global_profileFragment)
                     true
                 }
 
