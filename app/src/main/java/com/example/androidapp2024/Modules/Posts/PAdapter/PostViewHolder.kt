@@ -23,15 +23,15 @@ class PostViewHolder(
     private var toLocationTextView: TextView? = null
     private var itemDescriptionTextView: TextView? = null
     private var payForShippingCheckBox: CheckBox? = null
-    private var payOrNotText: EditText? = null
+    private var payOrNotText: TextView? = null
     private var itemImageView: ImageView? = null
     private var post: Post? = null
 
     init {
         itemNameTextView = itemView.findViewById(R.id.ItemName)
         itemWeightTextView = itemView.findViewById(R.id.WeightCount)
-        fromLocationTextView = itemView.findViewById(R.id.fromTextText)
-        toLocationTextView = itemView.findViewById(R.id.ToextText2)
+        fromLocationTextView = itemView.findViewById(R.id.tvfromLocation)
+        toLocationTextView = itemView.findViewById(R.id.tvtoLocation)
         itemDescriptionTextView = itemView.findViewById(R.id.DescriptionItemText)
       //  payForShippingSwitch = itemView.findViewById(R.id.pa)
         payForShippingCheckBox = itemView.findViewById(R.id.checkBox)
@@ -46,11 +46,11 @@ class PostViewHolder(
             listener?.OnItemClick(adapterPosition)
             listener?.onPostClicked(post)
         }
+
     }
     private fun updatePayOrNotText(isChecked: Boolean) {
         payOrNotText?.setText(if (isChecked) "Yes" else "No")
     }
-
     fun bind(post: Post?) {
         this.post = post
         itemNameTextView?.text = post?.itemName

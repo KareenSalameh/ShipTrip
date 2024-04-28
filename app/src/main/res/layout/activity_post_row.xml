@@ -8,156 +8,404 @@
     android:background="?attr/selectableItemBackground"
     android:contentDescription="TestDescription">
 
-
     <TextView
         android:id="@+id/ItemName"
-        android:layout_width="79dp"
-        android:layout_height="27dp"
+        android:layout_width="119dp"
+        android:layout_height="26dp"
         android:layout_marginTop="16dp"
-        android:text="Item Name"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:background="@drawable/btn1"
+        android:text="Item Name"
         android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="@color/white"
-        android:textSize="20dp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.775"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/PayOrNotText"
-        android:layout_width="57dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="32dp"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintBottom_toTopOf="@+id/DescriptionItemText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/WeightCount" />
-
-    <EditText
-        android:id="@+id/WeightCount"
-        android:layout_width="60dp"
-        android:layout_height="31dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.688"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Weight" />
 
     <TextView
         android:id="@+id/Weight"
         android:layout_width="61dp"
         android:layout_height="25dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="120dp"
+        android:layout_marginStart="156dp"
+        android:layout_marginTop="20dp"
         android:text="Weight"
         android:textColor="@color/black"
-        android:textSize="17dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/fromTextText"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="17sp"
+        app:layout_constraintStart_toEndOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/ItemName" />
 
     <TextView
         android:id="@+id/Paying"
         android:layout_width="61dp"
         android:layout_height="25dp"
-        android:layout_marginStart="31dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="36dp"
         android:text="Paying"
         android:textColor="@color/black"
-        android:textSize="17dp"
-        app:layout_constraintBottom_toTopOf="@+id/PayOrNotText"
+        android:textSize="17sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/Weight"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/ItemName" />
+
+    <TextView
+        android:id="@+id/DescriptionItemText"
+        android:layout_width="162dp"
+        android:layout_height="97dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="16dp"
+        android:text="Description"
+        android:textColor="#BB6962"
+        android:textIsSelectable="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.411"
+        app:layout_constraintStart_toEndOf="@+id/tvtoLocation"
+        app:layout_constraintTop_toBottomOf="@+id/PayOrNotText" />
 
     <Switch
         android:id="@+id/ShippedSwitch"
         android:layout_width="172dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="21dp"
-        android:layout_marginEnd="88dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginBottom="8dp"
         android:text="I will ShipTrip"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/DescriptionItemText"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.113"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ToextText2"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <EditText
-        android:id="@+id/fromTextText"
-        android:layout_width="212dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="116dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="FROM"
-        android:textSize="15dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/ToextText2"
-        android:layout_width="213dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="TO"
-        android:textSize="15dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fromTextText"
-        tools:ignore="TextSizeCheck" />
-
-    <TextView
-        android:id="@+id/DescriptionItemText"
-        android:layout_width="154dp"
-        android:layout_height="121dp"
-        android:layout_marginStart="268dp"
-        android:layout_marginTop="160dp"
-        android:text="Description"
-        android:textColor="#BB6962"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/tvtoLocation" />
 
     <ImageView
         android:id="@+id/UploadPhoto"
         android:layout_width="179dp"
-        android:layout_height="77dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="62dp"
-        app:layout_constraintBottom_toTopOf="@+id/DescriptionItemText"
+        android:layout_height="74dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintTop_toBottomOf="@+id/ItemName"
         app:srcCompat="@drawable/ship" />
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="3dp"
+        android:layout_height="1dp"
         android:background="@drawable/btn1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="244dp"
+        android:layout_marginTop="68dp"
+        android:text="kg"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/WeightCount"
+        app:layout_constraintTop_toBottomOf="@+id/ItemName" />
+
+    <TextView
+        android:id="@+id/tvtoLocation"
+        android:layout_width="150dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:text="tolocation"
+        app:layout_constraintEnd_toStartOf="@+id/PayOrNotText"
+        app:layout_constraintHorizontal_bias="0.018"
+        app:layout_constraintStart_toEndOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/tvfromLocation" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:text="Ship to:"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="28dp"
+        android:text="Ship from:"
+        android:textSize="16dp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/UploadPhoto" />
+
+    <TextView
+        android:id="@+id/tvfromLocation"
+        android:layout_width="134dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="16dp"
+        android:text="fromLocation"
+        app:layout_constraintEnd_toStartOf="@+id/WeightCount"
+        app:layout_constraintHorizontal_bias="0.071"
+        app:layout_constraintStart_toEndOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/UploadPhoto" />
+
+    <TextView
+        android:id="@+id/WeightCount"
+        android:layout_width="32dp"
+        android:layout_height="19dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="76dp"
+        android:text="weightkg"
+        app:layout_constraintEnd_toStartOf="@+id/PayOrNotText"
+        app:layout_constraintTop_toBottomOf="@+id/ItemName" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="25dp"
+        android:text="kg"
+        app:layout_constraintBottom_toTopOf="@+id/tvfromLocation"
+        app:layout_constraintEnd_toStartOf="@+id/PayOrNotText"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/WeightCount"
+        app:layout_constraintTop_toBottomOf="@+id/Weight"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/PayOrNotText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="48dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Paying" />
+
+    <TextView
+        android:id="@+id/tvItemDesc"
+        android:layout_width="131dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginBottom="4dp"
+        android:text="Item Description:"
+        android:textColor="#BB6962"
+        app:layout_constraintBottom_toTopOf="@+id/DescriptionItemText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/tvfromLocation"
+        app:layout_constraintTop_toBottomOf="@+id/PayOrNotText"
+        app:layout_constraintVertical_bias="0.875" />
+
+    <TextView
+        android:id="@+id/TheItemnametv"
+        android:layout_width="107dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginBottom="20dp"
+        android:text="The item is:"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/UploadPhoto"
+        app:layout_constraintEnd_toStartOf="@+id/ItemName"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:id="@+id/iPostListRowAvatar"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:background="?attr/selectableItemBackground"-->
+<!--    android:contentDescription="TestDescription">-->
+
+
+<!--    <TextView-->
+<!--        android:id="@+id/ItemName"-->
+<!--        android:layout_width="119dp"-->
+<!--        android:layout_height="26dp"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:background="@drawable/btn1"-->
+<!--        android:text="Item Name"-->
+<!--        android:textAlignment="center"-->
+<!--        android:textAppearance="@style/TextAppearance.AppCompat.Body1"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="20dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.775"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/Weight"-->
+<!--        android:layout_width="61dp"-->
+<!--        android:layout_height="25dp"-->
+<!--        android:layout_marginTop="64dp"-->
+<!--        android:layout_marginEnd="135dp"-->
+<!--        android:text="Weight"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:textSize="17dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/Paying"-->
+<!--        android:layout_width="61dp"-->
+<!--        android:layout_height="25dp"-->
+<!--        android:layout_marginStart="31dp"-->
+<!--        android:layout_marginTop="64dp"-->
+<!--        android:layout_marginEnd="28dp"-->
+<!--        android:text="Paying"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:textSize="17dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="1.0"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/Weight"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--    <Switch-->
+<!--        android:id="@+id/ShippedSwitch"-->
+<!--        android:layout_width="172dp"-->
+<!--        android:layout_height="37dp"-->
+<!--        android:layout_marginStart="20dp"-->
+<!--        android:layout_marginEnd="88dp"-->
+<!--        android:text="I will ShipTrip"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/DescriptionItemText"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/DescriptionItemText"-->
+<!--        android:layout_width="154dp"-->
+<!--        android:layout_height="121dp"-->
+<!--        android:layout_marginStart="268dp"-->
+<!--        android:layout_marginTop="160dp"-->
+<!--        android:text="Description"-->
+<!--        android:textColor="#BB6962"-->
+
+<!--        android:textIsSelectable="false"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.0" />-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/UploadPhoto"-->
+<!--        android:layout_width="179dp"-->
+<!--        android:layout_height="77dp"-->
+<!--        android:layout_marginStart="16dp"-->
+<!--        android:layout_marginBottom="62dp"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/DescriptionItemText"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="1.0"-->
+<!--        app:srcCompat="@drawable/ship" />-->
+
+<!--    <View-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="3dp"-->
+<!--        android:background="@drawable/btn1"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/textView3"-->
+<!--        android:layout_width="17dp"-->
+<!--        android:layout_height="22dp"-->
+<!--        android:layout_marginBottom="29dp"-->
+<!--        android:text="kg"-->
+<!--        android:textSize="15dp"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/DescriptionItemText"-->
+<!--        tools:layout_editor_absoluteX="315dp" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/textView5"-->
+<!--        android:layout_width="67dp"-->
+<!--        android:layout_height="29dp"-->
+<!--        android:layout_marginStart="28dp"-->
+<!--        android:layout_marginTop="12dp"-->
+<!--        android:text="Ship from:"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/UploadPhoto" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/textView6"-->
+<!--        android:layout_width="55dp"-->
+<!--        android:layout_height="25dp"-->
+<!--        android:layout_marginStart="28dp"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:layout_marginBottom="31dp"-->
+<!--        android:text="Ship to:"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/ShippedSwitch"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/textView5"-->
+<!--        app:layout_constraintVertical_bias="0.034" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/tvfromLocation"-->
+<!--        android:layout_width="91dp"-->
+<!--        android:layout_height="32dp"-->
+<!--        android:layout_marginStart="8dp"-->
+<!--        android:layout_marginTop="12dp"-->
+<!--        android:layout_marginEnd="56dp"-->
+<!--        android:text="fromLocation"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/WeightCount"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/textView5"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/UploadPhoto" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/tvtoLocation"-->
+<!--        android:layout_width="90dp"-->
+<!--        android:layout_height="27dp"-->
+<!--        android:layout_marginStart="26dp"-->
+<!--        android:layout_marginTop="17dp"-->
+<!--        android:layout_marginEnd="132dp"-->
+<!--        android:layout_marginBottom="50dp"-->
+<!--        android:text="tolocation"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/ShippedSwitch"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/DescriptionItemText"-->
+<!--        app:layout_constraintHorizontal_bias="0.222"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/textView6"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tvfromLocation"-->
+<!--        app:layout_constraintVertical_bias="0.0" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/WeightCount"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="22dp"-->
+<!--        android:layout_marginEnd="8dp"-->
+<!--        android:layout_marginBottom="30dp"-->
+<!--        android:text="weightkg"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/DescriptionItemText"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/textView3"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/Weight" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/PayOrNotText"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:layout_marginEnd="32dp"-->
+<!--        android:layout_marginBottom="32dp"-->
+<!--        android:text="TextView"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/DescriptionItemText"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/Paying"-->
+<!--        app:layout_constraintVertical_bias="0.0" />-->
+
+<!--</androidx.constraintlayout.widget.ConstraintLayout>-->
