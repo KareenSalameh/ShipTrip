@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.Switch
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.androidapp2024.Model.PostModel.Post
 import com.example.androidapp2024.Modules.Posts.PostsRcyclerViewActivity
 import com.example.androidapp2024.R
@@ -60,6 +61,13 @@ class PostViewHolder(
         itemDescriptionTextView?.text = post?.itemDescription
         payForShippingCheckBox?.isChecked = post?.payForShipping ?: false
         updatePayOrNotText(post?.payForShipping ?: false)
+        if (!post?.itemImageUri.isNullOrEmpty()) {
+            Glide.with(itemView)
+                .load(post?.itemImageUri)
+                .into(itemImageView!!)
+        } else {
+            itemImageView?.setImageResource(R.drawable.ship)
+        }
         // You might need to set the itemImageView here
     }
 }

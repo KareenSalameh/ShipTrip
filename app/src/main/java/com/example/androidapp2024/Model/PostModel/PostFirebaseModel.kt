@@ -1,5 +1,6 @@
 package com.example.androidapp2024.Model.PostModel
 
+import android.util.Log
 import com.google.firebase.Timestamp
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.firestore.firestoreSettings
@@ -38,9 +39,33 @@ class PostFirebaseModel {
             }
     }
 
+//    fun addPost(post: Post, callback: () -> Unit) {
+//        db.collection(POSTS_COLLECTION_PATH).document(post.postId).set(post.json).addOnSuccessListener {
+//            callback()
+//        }
+//    }
+//    fun addPost(post: Post, callback: () -> Unit) {
+//        db.collection(POSTS_COLLECTION_PATH)
+//            .document(post.postId)
+//            .set(post.json)
+//            .addOnSuccessListener {
+//                callback()
+//            }
+//            .addOnFailureListener { exception ->
+//                // Handle the failure case
+//                Log.e("PostFirebaseModel", "Error adding post: ${exception.message}")
+//            }
+//    }
     fun addPost(post: Post, callback: () -> Unit) {
-        db.collection(POSTS_COLLECTION_PATH).document(post.postId).set(post.json).addOnSuccessListener {
-            callback()
-        }
+        db.collection(POSTS_COLLECTION_PATH)
+            .document(post.postId)
+            .set(post.json)
+            .addOnSuccessListener {
+                callback()
+            }
+            .addOnFailureListener { exception ->
+                // Handle the failure case
+                Log.e("PostFirebaseModel", "Error adding post: ${exception.message}", exception)
+            }
     }
 }
