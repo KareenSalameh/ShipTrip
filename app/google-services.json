@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "340345346190",
+    "project_id": "shiptrip-app",
+    "storage_bucket": "shiptrip-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:340345346190:android:cd1e13106c8ddc8b59d1df",
+        "android_client_info": {
+          "package_name": "com.example.androidapp2024"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCg6QxjyBJ3zyMJaxAbTG8SmwaKHcg-iCE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
