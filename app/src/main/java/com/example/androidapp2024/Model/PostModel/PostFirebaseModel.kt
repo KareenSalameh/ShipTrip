@@ -39,7 +39,7 @@ class PostFirebaseModel {
     }
 
     fun addPost(post: Post, callback: () -> Unit) {
-        db.collection(POSTS_COLLECTION_PATH).document(post.postUid).set(post.json).addOnSuccessListener {
+        db.collection(POSTS_COLLECTION_PATH).document(post.postId).set(post.json).addOnSuccessListener {
             callback()
         }
     }

@@ -47,8 +47,6 @@ data class User(
             timestamp?.let{
                 u.lastUpdated = it.seconds
             }
-
-
             return u
         }
 

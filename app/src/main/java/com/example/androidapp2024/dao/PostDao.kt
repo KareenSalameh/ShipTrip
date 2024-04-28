@@ -25,6 +25,6 @@ interface PostDao {
     @Delete
     fun delete(post: Post)
 
-    @Query("SELECT * FROM Post WHERE postUid =:postUid")
+    @Query("SELECT * FROM Post WHERE postId =:postUid")
     fun getPostById(postUid: String): List<Post>
 }

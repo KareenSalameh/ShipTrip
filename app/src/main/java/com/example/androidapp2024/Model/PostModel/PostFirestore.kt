@@ -28,7 +28,6 @@ class PostFirestore constructor()  {
                 for(post in list){
                     database.PostDao().insert(post)
 
-
                     post.lastUpdated?.let{
                         if(time < it){
                             time = post.lastUpdated ?:System.currentTimeMillis()

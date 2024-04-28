@@ -6,4 +6,12 @@
     <string name="review_image">photo\n</string>
     <string name="from">FROM</string>
     <string name="To">TO\n</string>
+    <string name="item_image">item image\n</string>
+    <string name="item_name">Item name\n</string>
+    <string name="item_weight">Weight\n</string>
+    <string name="pay_for_shipping">Paying for Shipping</string>
+    <string name="from_location">Shipping FROM</string>
+    <string name="to_location">Shipping TO</string>
+    <string name="item_description">Item description</string>
+    <string name="add_post">Post</string>
 </resources>

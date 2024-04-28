@@ -13,38 +13,41 @@
         android:id="@+id/ItemName"
         android:layout_width="79dp"
         android:layout_height="27dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="16dp"
         android:text="Item Name"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:background="@drawable/btn1"
+        android:textAlignment="center"
+        android:textColor="@color/white"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.775"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <EditText
-        android:id="@+id/PayCount"
-        android:layout_width="54dp"
-        android:layout_height="37dp"
+        android:id="@+id/PayOrNotText"
+        android:layout_width="57dp"
+        android:layout_height="35dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginBottom="72dp"
+        android:layout_marginBottom="32dp"
         android:ems="10"
         android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/DescriptionItemText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/WeightCount" />
 
     <EditText
         android:id="@+id/WeightCount"
-        android:layout_width="67dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="12dp"
+        android:layout_width="60dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.698"
+        app:layout_constraintHorizontal_bias="0.688"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Weight" />
 
@@ -69,36 +72,40 @@
         android:layout_width="61dp"
         android:layout_height="25dp"
         android:layout_marginStart="31dp"
+        android:layout_marginTop="64dp"
         android:layout_marginEnd="28dp"
         android:layout_marginBottom="12dp"
         android:text="Paying"
         android:textColor="@color/black"
         android:textSize="17dp"
-        app:layout_constraintBottom_toTopOf="@+id/PayCount"
+        app:layout_constraintBottom_toTopOf="@+id/PayOrNotText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/Weight"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <Switch
         android:id="@+id/ShippedSwitch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="116dp"
-        android:layout_marginBottom="1dp"
+        android:layout_width="172dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="88dp"
         android:text="I will ShipTrip"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/textView6" />
+        app:layout_constraintEnd_toStartOf="@+id/DescriptionItemText"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ToextText2"
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/fromTextText"
-        android:layout_width="110dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="108dp"
-        android:layout_marginTop="64dp"
+        android:layout_width="212dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="116dp"
         android:ems="10"
         android:inputType="text"
         android:text="FROM"
@@ -108,10 +115,10 @@
 
     <EditText
         android:id="@+id/ToextText2"
-        android:layout_width="111dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="108dp"
-        android:layout_marginTop="5dp"
+        android:layout_width="213dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
         android:ems="10"
         android:inputType="text"
         android:text="TO"
@@ -121,29 +128,36 @@
         tools:ignore="TextSizeCheck" />
 
     <TextView
-        android:id="@+id/textView6"
-        android:layout_width="217dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="13dp"
-        android:text="TextView"
+        android:id="@+id/DescriptionItemText"
+        android:layout_width="154dp"
+        android:layout_height="121dp"
+        android:layout_marginStart="268dp"
+        android:layout_marginTop="160dp"
+        android:text="Description"
+        android:textColor="#BB6962"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ToextText2"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="102dp"
-        android:layout_height="102dp"
-        android:layout_marginStart="5dp"
+        android:id="@+id/UploadPhoto"
+        android:layout_width="179dp"
+        android:layout_height="77dp"
+        android:layout_marginStart="16dp"
         android:layout_marginBottom="62dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView6"
+        app:layout_constraintBottom_toTopOf="@+id/DescriptionItemText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/ship" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@drawable/btn1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
