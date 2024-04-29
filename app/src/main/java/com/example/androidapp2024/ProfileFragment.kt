@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.androidapp2024.Model.UserModel.User
 import com.example.androidapp2024.Model.UserModel.UserFirebaseModel
@@ -96,7 +97,11 @@ class ProfileFragment : Fragment() {
         //     .replace(R.id.container, editProfileFragment)
         //     .addToBackStack(null)
         //     .commit()
-    }
+
+            findNavController().navigate(R.id.action_global_editProfileFragment)
+
+
+        }
 
     private fun navigateToMyPosts() {
         // Navigate to the user's posts fragment
@@ -106,6 +111,7 @@ class ProfileFragment : Fragment() {
         //     .replace(R.id.container, myPostsFragment)
         //     .addToBackStack(null)
         //     .commit()
+
     }
 
     private fun logout() {

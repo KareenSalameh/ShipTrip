@@ -48,4 +48,14 @@ class UserFirestore private constructor() {
                 onFailure(exception)
             }
     }
+    fun updateUser(user: User, onSuccess: () -> Unit, onFailure: (Exception) -> Unit) {
+        val userDocRef = usersCollection.document(user.userId)
+        userDocRef.set(user, SetOptions.merge())
+            .addOnSuccessListener {
+                onSuccess()
+            }
+            .addOnFailureListener { exception ->
+                onFailure(exception)
+            }
+    }
 }
