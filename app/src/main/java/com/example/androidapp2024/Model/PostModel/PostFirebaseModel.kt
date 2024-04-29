@@ -9,7 +9,6 @@ import com.google.firebase.firestore.memoryCacheSettings
 
 class PostFirebaseModel {
     private val db = Firebase.firestore
-
     companion object{
         const val POSTS_COLLECTION_PATH = "Posts"
     }

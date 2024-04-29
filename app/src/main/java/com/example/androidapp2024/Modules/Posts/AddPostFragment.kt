@@ -18,13 +18,14 @@ import com.example.androidapp2024.Model.PostModel.Post
 import com.example.androidapp2024.Model.PostModel.PostFirestore
 import com.example.androidapp2024.R
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.auth.FirebaseAuth
 
 import com.google.firebase.storage.FirebaseStorage
 
 class AddPostFragment : Fragment() {
     val db = FirebaseFirestore.getInstance()
     val postId = db.collection("Posts").document().id
-    val userId = db.collection("User").document().id
+   // val userId = db.collection("User").document().id
 
     private val IMAGE_PICK_CODE = 1000
     private var imageUri: Uri? = null
@@ -86,68 +87,78 @@ class AddPostFragment : Fragment() {
             val toLocation = toLocationEditText?.text.toString()
             val itemDescription = itemDescriptionEditText?.text.toString()
 
-            // You might need to handle the itemImageUri here
-            if (imageUri != null) {
-                val storageRef = FirebaseStorage.getInstance().reference
-                val imageRef = storageRef.child("post_images/${System.currentTimeMillis()}.jpg")
-                val uploadTask = imageRef.putFile(imageUri!!)
-
-                uploadTask.continueWithTask { task ->
-                    if (!task.isSuccessful) {
-                        val exception = task.exception
-                        Log.e("AddPostFragment", "Error uploading image: ${exception?.message}", exception)
-                        throw exception!!
-                    }
-                    imageRef.downloadUrl
-                }.addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        val downloadUri = task.result
-                        val post = Post(
-                            itemName = itemName,
-                            itemImageUri = downloadUri.toString(),
-                            itemWeight = itemWeight,
-                            payForShipping = payForShipping,
-                            fromLocation = fromLocation,
-                            toLocation = toLocation,
-                            itemDescription = itemDescription,
-                            author = "", // Set the author
-                            userId = userId,
-                            postId = postId
-                        )
-                        PostFirestore().addPost(post) {
-                            // Navigate back after the post is added successfully
-                            activity?.runOnUiThread {
-                                Navigation.findNavController(view).popBackStack()
-                            }
+            val currentUserId = FirebaseAuth.getInstance().currentUser?.uid
+            if (currentUserId != null) {
+                if (imageUri != null) {
+                    val storageRef = FirebaseStorage.getInstance().reference
+                    val imageRef = storageRef.child("post_images/${System.currentTimeMillis()}.jpg")
+                    val uploadTask = imageRef.putFile(imageUri!!)
+                    uploadTask.continueWithTask { task ->
+                        if (!task.isSuccessful) {
+                            val exception = task.exception
+                            Log.e(
+                                "AddPostFragment",
+                                "Error uploading image: ${exception?.message}",
+                                exception
+                            )
+                            throw exception!!
                         }
-                    } else {
-                        // Handle upload failure
-                        val exception = task.exception
-                        Log.e("AddPostFragment", "Error uploading image: ${exception?.message}", exception)
+                        imageRef.downloadUrl
+                    }.addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            val downloadUri = task.result
+                            val post = Post(
+                                itemName = itemName,
+                                itemImageUri = downloadUri.toString(),
+                                itemWeight = itemWeight,
+                                payForShipping = payForShipping,
+                                fromLocation = fromLocation,
+                                toLocation = toLocation,
+                                itemDescription = itemDescription,
+                                author = "", // Set the author
+                                userId = currentUserId,
+                                postId = postId
+                            )
+                            PostFirestore().addPost(post) {
+                                activity?.runOnUiThread {
+                                    Navigation.findNavController(view).popBackStack()
+                                }
+                            }
+                        } else {
+                            val exception = task.exception
+                            Log.e(
+                                "AddPostFragment",
+                                "Error uploading image: ${exception?.message}",
+                                exception
+                            )
 
+                        }
+                    }
+
+                } else {
+                    val post = Post(
+                        itemName = itemName,
+                        itemImageUri = "", // Set the itemImageUri
+                        itemWeight = itemWeight,
+                        payForShipping = payForShipping,
+                        fromLocation = fromLocation,
+                        toLocation = toLocation,
+                        itemDescription = itemDescription,
+                        author = "", // Set the author
+                        userId = currentUserId,
+                        postId = postId
+                    )
+
+                    PostFirestore().addPost(post) {
+                        // Navigate back after the post  added successfully
+                        activity?.runOnUiThread {
+                            Navigation.findNavController(view).popBackStack()
+                        }
                     }
                 }
-
-            } else {
-                val post = Post(
-                    itemName = itemName,
-                    itemImageUri = "", // Set the itemImageUri
-                    itemWeight = itemWeight,
-                    payForShipping = payForShipping,
-                    fromLocation = fromLocation,
-                    toLocation = toLocation,
-                    itemDescription = itemDescription,
-                    author = "", // Set the author
-                    userId = userId,
-                    postId = postId
-                )
-
-                PostFirestore().addPost(post) {
-                    // Navigate back after the post  added successfully
-                    activity?.runOnUiThread {
-                        Navigation.findNavController(view).popBackStack()
-                    }
-                }
+            }else {
+                // Handle the case when the user is not logged in
+                Log.e("AddPostFragment", "User is not logged in")
             }
         }
     }

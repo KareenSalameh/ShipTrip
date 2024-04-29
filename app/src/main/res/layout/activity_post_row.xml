@@ -49,16 +49,16 @@
 
     <TextView
         android:id="@+id/DescriptionItemText"
-        android:layout_width="151dp"
-        android:layout_height="94dp"
+        android:layout_width="127dp"
+        android:layout_height="100dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="68dp"
         android:layout_marginEnd="16dp"
         android:text="Description"
         android:textColor="#BB6962"
         android:textIsSelectable="false"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.411"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/tvtoLocation"
         app:layout_constraintTop_toBottomOf="@+id/PayOrNotText" />
 
@@ -77,9 +77,9 @@
 
     <ImageView
         android:id="@+id/UploadPhoto"
-        android:layout_width="179dp"
-        android:layout_height="74dp"
-        android:layout_marginStart="24dp"
+        android:layout_width="189dp"
+        android:layout_height="98dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ItemName"
@@ -117,14 +117,14 @@
 
     <TextView
         android:id="@+id/tvtoLocation"
-        android:layout_width="150dp"
-        android:layout_height="21dp"
+        android:layout_width="137dp"
+        android:layout_height="25dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="16dp"
         android:text="tolocation"
         app:layout_constraintEnd_toStartOf="@+id/PayOrNotText"
-        app:layout_constraintHorizontal_bias="0.018"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/tvfromLocation" />
 
@@ -161,7 +161,7 @@
         android:layout_marginEnd="16dp"
         android:text="fromLocation"
         app:layout_constraintEnd_toStartOf="@+id/WeightCount"
-        app:layout_constraintHorizontal_bias="0.071"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/UploadPhoto" />
 
@@ -170,7 +170,7 @@
         android:layout_width="32dp"
         android:layout_height="19dp"
         android:layout_marginTop="64dp"
-        android:layout_marginEnd="76dp"
+        android:layout_marginEnd="28dp"
         android:text="weightkg"
         app:layout_constraintEnd_toStartOf="@+id/PayOrNotText"
         app:layout_constraintTop_toBottomOf="@+id/ItemName" />
@@ -186,7 +186,7 @@
         android:text="kg"
         app:layout_constraintBottom_toTopOf="@+id/tvfromLocation"
         app:layout_constraintEnd_toStartOf="@+id/PayOrNotText"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/WeightCount"
         app:layout_constraintTop_toBottomOf="@+id/Weight"
         app:layout_constraintVertical_bias="0.0" />
@@ -195,8 +195,8 @@
         android:id="@+id/PayOrNotText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="48dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="36dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Paying" />
@@ -215,7 +215,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/tvfromLocation"
         app:layout_constraintTop_toBottomOf="@+id/PayOrNotText"
-        app:layout_constraintVertical_bias="0.875" />
+        app:layout_constraintVertical_bias="0.793" />
 
     <TextView
         android:id="@+id/TheItemnametv"

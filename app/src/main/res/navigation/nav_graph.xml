@@ -40,7 +40,7 @@
     <action android:id="@+id/action_global_addPostFragment3" app:destination="@id/addPostFragment3" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.androidapp2024.ProfileFragment"
+        android:name="com.example.androidapp2024.Modules.Profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
     <action android:id="@+id/action_global_profileFragment" app:destination="@id/profileFragment" />
@@ -60,7 +60,13 @@
         android:label="LoginActivity" />
     <fragment
         android:id="@+id/editProfileFragment"
-        android:name="com.example.androidapp2024.EditProfileFragment"
+        android:name="com.example.androidapp2024.Modules.Profile.EditProfileFragment"
         android:label="fragment_edit_profile"
-        tools:layout="@layout/fragment_edit_profile" /><action android:id="@+id/action_global_editProfileFragment" app:destination="@id/editProfileFragment"/>
+        tools:layout="@layout/fragment_edit_profile" />
+    <action android:id="@+id/action_global_editProfileFragment" app:destination="@id/editProfileFragment" />
+    <fragment
+        android:id="@+id/myPostsFragment"
+        android:name="com.example.androidapp2024.Modules.Posts.MyPostsFragment"
+        android:label="fragment_my_posts"
+        tools:layout="@layout/fragment_my_posts" /><action android:id="@+id/action_global_myPostsFragment" app:destination="@id/myPostsFragment"/>
 </navigation>

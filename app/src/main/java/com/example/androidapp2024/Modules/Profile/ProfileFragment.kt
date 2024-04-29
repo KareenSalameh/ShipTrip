@@ -1,4 +1,4 @@
-package com.example.androidapp2024
+package com.example.androidapp2024.Modules.Profile
 
 import UserFirestore
 import android.content.Context
@@ -12,11 +12,11 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.navigation.fragment.findNavController
-import com.bumptech.glide.Glide
+import com.example.androidapp2024.MainActivity
 import com.example.androidapp2024.Model.UserModel.User
 import com.example.androidapp2024.Model.UserModel.UserFirebaseModel
+import com.example.androidapp2024.R
 import com.google.firebase.auth.FirebaseAuth
-import de.hdodenhof.circleimageview.CircleImageView
 
 class ProfileFragment : Fragment() {
     private lateinit var nameTextView: TextView
@@ -111,6 +111,7 @@ class ProfileFragment : Fragment() {
         //     .replace(R.id.container, myPostsFragment)
         //     .addToBackStack(null)
         //     .commit()
+        findNavController().navigate(R.id.action_global_myPostsFragment)
 
     }
 

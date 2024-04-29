@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity() {
 
             // Start the RegisterActivity
             startActivity(intent)
+            //finish()
         }
     }
 }

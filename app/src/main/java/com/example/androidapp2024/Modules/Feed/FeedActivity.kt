@@ -7,7 +7,6 @@ import android.view.Menu
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.example.androidapp2024.Model.UserModel.User
-import com.example.androidapp2024.ProfileFragment
 import com.example.androidapp2024.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth

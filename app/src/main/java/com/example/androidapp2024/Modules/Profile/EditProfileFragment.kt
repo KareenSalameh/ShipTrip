@@ -1,4 +1,4 @@
-package com.example.androidapp2024
+package com.example.androidapp2024.Modules.Profile
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,10 +10,12 @@ import android.widget.EditText
 import android.widget.Toast
 import com.example.androidapp2024.Model.UserModel.User
 import androidx.navigation.fragment.findNavController
+import com.example.androidapp2024.R
 import com.google.firebase.auth.FirebaseAuth
 
 class EditProfileFragment : Fragment() {
     private lateinit var btnSave: Button
+    private lateinit var btnCancel2: Button
     private lateinit var etName: EditText
     private lateinit var etEmail: EditText
     private lateinit var etLocation: EditText
@@ -35,6 +37,7 @@ class EditProfileFragment : Fragment() {
 
         // Find views by their IDs
         btnSave = view.findViewById(R.id.btnSave)
+        btnCancel2 = view.findViewById(R.id.btnCancel2)
         etName = view.findViewById(R.id.etName)
         etEmail = view.findViewById(R.id.etEmail)
         etLocation = view.findViewById(R.id.etLocation)
@@ -47,6 +50,9 @@ class EditProfileFragment : Fragment() {
 
         btnSave.setOnClickListener {
             saveChanges()
+        }
+        btnCancel2.setOnClickListener {
+            findNavController().popBackStack()
         }
     }
     private fun saveChanges() {
