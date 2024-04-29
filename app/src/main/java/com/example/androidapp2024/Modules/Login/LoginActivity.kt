@@ -15,78 +15,67 @@ import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import com.example.androidapp2024.Model.UserModel.UserFirebaseModel
 import com.example.androidapp2024.R
 import com.example.androidapp2024.Modules.Register.RegisterActivity
+import com.google.firebase.Firebase
+import com.google.firebase.auth.auth
 
 class LoginActivity : AppCompatActivity() {
-    private lateinit var auth: FirebaseAuth
-    private lateinit var firebaseModel: UserFirebaseModel
+    private var auth = Firebase.auth
+    private lateinit var emailEditText: EditText
+    private lateinit var passwordEditText: EditText
+    private lateinit var loginButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        // Initialize Firebase Auth
-        auth = FirebaseAuth.getInstance()
+        emailEditText = findViewById(R.id.editTextEmail)
+        passwordEditText = findViewById(R.id.editTextPassword)
+        loginButton = findViewById(R.id.Loginbtn2)
 
-        val loginButton: Button = findViewById(R.id.button3)
+        // Set click listener for login button
         loginButton.setOnClickListener {
-            val emailEditText = findViewById(R.id.editTextEmail) as EditText
-            val passwordEditText = findViewById(R.id.editTextPassword) as EditText
-
-            val email = emailEditText.text.toString()
-            val password = passwordEditText.text.toString()
-            // Validate email and password
-            if (!isValidEmail(email)) {
-                Toast.makeText(this, "Invalid email address", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
-
-            if (!isValidPassword(password)) {
-                Toast.makeText(this, "Invalid password. Password must contain at least 4 characters with letters and numbers.", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
-            // Check if email and password are not empty
-            if (email.isNotEmpty() && password.isNotEmpty()) {
-                // Sign in user with email and password
-                auth.signInWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(this) { task ->
-                        if (task.isSuccessful) {
-                            // val user = auth.currentUser
-                            startActivity(Intent(this, FeedActivity::class.java))
-                            finish() // Close current activity
-                        } else {
-                            // Sign in failed
-                            when (task.exception) {
-                                is FirebaseAuthInvalidUserException -> {
-                                    // Email not registered
-                                    Toast.makeText(this, "Email not registered.", Toast.LENGTH_SHORT).show()
-                                }
-                                is FirebaseAuthInvalidCredentialsException -> {
-                                    // Incorrect password or email
-                                    Toast.makeText(this, "Incorrect email or password.", Toast.LENGTH_SHORT).show()
-                                }
-                                else -> {
-                                    // Other errors
-                                    Log.e("LoginActivity", "signInWithEmailAndPassword:failure", task.exception)
-                                    Toast.makeText(this, "Authentication failed.", Toast.LENGTH_SHORT).show()
-                                }
-                            }
-                        }
-                    }
-            } else {
-                // Display an error message if email or password is empty
-                Toast.makeText(
-                    baseContext, "Please enter email and password.",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
+            logInUser()
         }
-
-        val textViewRegister: TextView = findViewById(R.id.textViewRegister)
-        textViewRegister.setOnClickListener {
-            val intent = Intent(this, RegisterActivity::class.java)
-            startActivity(intent)
-        }
+//        if (auth.currentUser != null) {
+//            HandleLogIn()
+//        }
     }
+
+    private fun logInUser() {
+        val email = emailEditText.text.toString()
+        val password = passwordEditText.text.toString()
+
+        if (!isValidEmail(email)) {
+            Toast.makeText(this, "Invalid email address", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        if (!isValidPassword(password)) {
+            Toast.makeText(
+                this,
+                "Invalid password. Password must contain at least 4 characters with letters and numbers.",
+                Toast.LENGTH_SHORT
+            ).show()
+            return
+        }
+
+        auth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    Log.d(TAG, "signInWithEmail:success")
+                    val intent = Intent(this@LoginActivity, FeedActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                } else {
+                    Log.w(TAG, "signInWithEmail:failure", task.exception)
+                    Toast.makeText(
+                        baseContext, "Authentication failed.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+    }
+
     private fun isValidEmail(email: String): Boolean {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
@@ -95,26 +84,8 @@ class LoginActivity : AppCompatActivity() {
         val pattern = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{4,}\$".toRegex()
         return pattern.matches(password)
     }
+
+    companion object {
+        private const val TAG = "LoginActivity"
+    }
 }
-//package com.example.androidapp2024
-//
-//import android.content.Intent
-//import androidx.appcompat.app.AppCompatActivity
-//import android.os.Bundle
-//import android.widget.TextView
-//
-//class LoginActivity : AppCompatActivity() {
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_login)
-//
-//        val textViewLogin: TextView = findViewById(R.id.textViewRegister)
-//
-//        textViewLogin.setOnClickListener {
-//            // Create an Intent to navigate to the RegisterActivity
-//            val intent = Intent(this, RegisterActivity::class.java)
-//
-//            startActivity(intent)
-//        }
-//    }
-//}

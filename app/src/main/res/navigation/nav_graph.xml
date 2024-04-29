@@ -42,5 +42,20 @@
         android:id="@+id/profileFragment"
         android:name="com.example.androidapp2024.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" /><action android:id="@+id/action_global_profileFragment" app:destination="@id/profileFragment"/>
+        tools:layout="@layout/fragment_profile" />
+    <action android:id="@+id/action_global_profileFragment" app:destination="@id/profileFragment" />
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.androidapp2024.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
+    <activity
+        android:id="@+id/registerActivity"
+        android:name="com.example.androidapp2024.Modules.Register.RegisterActivity"
+        android:label="activity_login"
+        tools:layout="@layout/activity_login" />
+    <activity
+        android:id="@+id/loginActivity"
+        android:name="com.example.androidapp2024.Modules.Login.LoginActivity"
+        android:label="LoginActivity" />
 </navigation>

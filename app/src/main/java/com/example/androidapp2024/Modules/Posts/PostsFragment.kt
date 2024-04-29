@@ -12,14 +12,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androidapp2024.Model.PostModel.PostFirestore
 import com.example.androidapp2024.Model.PostModel.Post
-import com.example.androidapp2024.Model.UserModel.UserFirestore
 import com.example.androidapp2024.Modules.Posts.PAdapter.PostsRecyclerAdapter
 import com.example.androidapp2024.databinding.FragmentPostsBinding
 
 class PostsFragment : Fragment() {
     private var _binding: FragmentPostsBinding? = null
     private val binding get() = _binding!!
-
+    var postprogressBar: ProgressBar?= null
     private var postsRecyclerView: RecyclerView? = null
     private var posts: List<Post>? = null
     private var adapter: PostsRecyclerAdapter? = null
@@ -32,11 +31,14 @@ class PostsFragment : Fragment() {
         val view = binding.root
         binding.rPostRcyclerList.layoutManager = LinearLayoutManager(context)
         binding.rPostRcyclerList.setHasFixedSize(true)
+        postprogressBar = binding.postprogressBar //view.findViewById(R.id.progressBar)
+        postprogressBar?.visibility = View.VISIBLE
 
         PostFirestore.instance.getAllPosts { posts ->
             this.posts = posts
             adapter?.posts = posts
             adapter?.notifyDataSetChanged()
+            postprogressBar?.visibility = View.GONE
         }
 
         postsRecyclerView = binding.rPostRcyclerList
@@ -59,7 +61,20 @@ class PostsFragment : Fragment() {
 
         return view
     }
+    override fun onResume() {
+        super.onResume()
 
+        postprogressBar?.visibility = View.VISIBLE
+
+        PostFirestore.instance.getAllPosts { posts ->
+            this.posts = posts
+            adapter?.posts = posts
+            adapter?.notifyDataSetChanged()
+
+            postprogressBar?.visibility = View.GONE
+
+        }
+    }
     override fun onDestroy() {
         super.onDestroy()
 

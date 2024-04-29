@@ -1,47 +1,41 @@
 package com.example.androidapp2024.Model.UserModel
 
 import com.google.firebase.Timestamp
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
 import com.google.firebase.ktx.Firebase
-import com.google.firebase.firestore.firestoreSettings
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.firestore.memoryCacheSettings
 
 class UserFirebaseModel {
-    private val db = Firebase.firestore
+    private val db = FirebaseFirestore.getInstance()
 
-    companion object{
-        const val STUDENTS_COLLECTION_PATH = "Users"
+    companion object {
+        const val USERS_COLLECTION_PATH = "Users"
     }
-    init {
-        val settings = firestoreSettings {
-            setLocalCacheSettings(memoryCacheSettings {  })
-        }
-            db.firestoreSettings = settings
-    }
-    fun getAllStudents(since: Long,callback: (List<User>) -> Unit){
 
-        db.collection(STUDENTS_COLLECTION_PATH)
-            .whereGreaterThanOrEqualTo(User.LAST_UPDATED,Timestamp(since,0))
-            .get().addOnCompleteListener {
-            when (it.isSuccessful) {
-                true -> {
-                    val users: MutableList<User> = mutableListOf()
-                    for (json in it.result) {
-
-                        val user = User.fromJSON(json.data)
-                        users.add(user)
-                    }
-                    callback(users)
+    fun getUserData(userId: String, onSuccess: (User) -> Unit, onFailure: (Exception) -> Unit) {
+        val userDocRef = db.collection(USERS_COLLECTION_PATH).document(userId)
+        userDocRef.get()
+            .addOnSuccessListener { documentSnapshot ->
+                if (documentSnapshot.exists()) {
+                    val userData = documentSnapshot.toObject(User::class.java)
+                    onSuccess(userData!!)
+                } else {
+                    onFailure(Exception("User data not found"))
                 }
-                false -> callback(listOf())
             }
-        }
+            .addOnFailureListener { exception ->
+                onFailure(exception)
+            }
     }
 
-    fun addUser(user: User, callback: () -> Unit) {
-        db.collection(STUDENTS_COLLECTION_PATH).document(user.id).set(user.json).addOnSuccessListener {
-            callback()
-        }
+    fun addUser(user: User, onSuccess: () -> Unit, onFailure: (Exception) -> Unit) {
+        val userDocRef = db.collection(USERS_COLLECTION_PATH).document(user.userId)
+        userDocRef.set(user, SetOptions.merge())
+            .addOnSuccessListener {
+                onSuccess()
+            }
+            .addOnFailureListener { exception ->
+                onFailure(exception)
+            }
     }
-
 }

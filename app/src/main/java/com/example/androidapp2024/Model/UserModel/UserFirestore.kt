@@ -1,65 +1,51 @@
-package com.example.androidapp2024.Model.UserModel
+import com.example.androidapp2024.Model.UserModel.User
+import com.example.androidapp2024.Model.UserModel.UserFirebaseModel
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
 
-import android.os.Looper
-import android.util.Log
-import androidx.core.os.HandlerCompat
-import com.example.androidapp2024.dao.AppLocalDatabase
-import java.util.concurrent.Executors
-
+import com.google.firebase.ktx.Firebase
 class UserFirestore private constructor() {
-    private val database = AppLocalDatabase.db
-    private var executor = Executors.newSingleThreadExecutor()
-    private var mainHandler = HandlerCompat.createAsync(Looper.getMainLooper())
-    private val firebaseModel = UserFirebaseModel()
+
+    private val db = FirebaseFirestore.getInstance()
+    private val usersCollection = db.collection(UserFirebaseModel.USERS_COLLECTION_PATH)
+
     companion object {
-        val instance: UserFirestore = UserFirestore()
-    }
+        @Volatile
+        private var INSTANCE: UserFirestore? = null
 
-    interface GetAllUserListener{
-        fun onComplete(users: List<User>)
-    }
-    fun getAllUsers(callback: (List<User>) -> Unit) {
-        val lastUpdated:Long = User.lastUpdated
-
-        firebaseModel.getAllStudents(lastUpdated){list ->
-            Log.i("TAG", "FireBase returned ${list.size}, lastUpdated: $lastUpdated")
-
-            executor.execute{
-                var time = lastUpdated
-                for(user in list){
-                    database.userDao().insert(user)
-
-
-                    user.lastUpdated?.let{
-                        if(time < it){
-                            time = user.lastUpdated ?:System.currentTimeMillis()
-                        }
-                    }
-                    //update local data
-                    User.lastUpdated = time
-                    val users = database.userDao().getAll()
-
-                    mainHandler.post{
-                        callback(users)
-
-                    }
-                }
+        fun getInstance(): UserFirestore {
+            return INSTANCE ?: synchronized(this) {
+                val instance = UserFirestore()
+                INSTANCE = instance
+                instance
             }
         }
-
-//        executor.execute{
-//
-//            Thread.sleep(5000)
-//
-//            val users = database.userDao().getAll()
-//            mainHandler.post{
-//                // Main Thread
-//                callback(users)
-//            }
-//        }
     }
-    fun addUser(user: User, callback: () -> Unit){
-        firebaseModel.addUser(user, callback)
 
+    fun getUserData(userId: String, onSuccess: (User) -> Unit, onFailure: (Exception) -> Unit) {
+        val userDocRef = usersCollection.document(userId)
+        userDocRef.get()
+            .addOnSuccessListener { documentSnapshot ->
+                if (documentSnapshot.exists()) {
+                    val userData = documentSnapshot.toObject(User::class.java)
+                    onSuccess(userData!!)
+                } else {
+                    onFailure(Exception("User data not found"))
+                }
+            }
+            .addOnFailureListener { exception ->
+                onFailure(exception)
+            }
+    }
+
+    fun addUser(user: User, onSuccess: () -> Unit, onFailure: (Exception) -> Unit) {
+        val userDocRef = usersCollection.document(user.userId)
+        userDocRef.set(user, SetOptions.merge())
+            .addOnSuccessListener {
+                onSuccess()
+            }
+            .addOnFailureListener { exception ->
+                onFailure(exception)
+            }
     }
 }

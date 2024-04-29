@@ -2,9 +2,12 @@ package com.example.androidapp2024.Modules.Feed
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import com.example.androidapp2024.Model.UserModel.User
+import com.example.androidapp2024.ProfileFragment
 import com.example.androidapp2024.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
@@ -17,7 +20,17 @@ class FeedActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_feed)
-      //  supportActionBar?.title = "Hello"
+
+        val userId = intent.getStringExtra("USER_ID")
+        if (userId != null) {
+            UserFirestore.getInstance().getUserData(userId, { user ->
+                navigateToProfileFragment(user)
+
+            }, { exception ->
+                Log.e("FeedActivity", "Error retrieving user data: ${exception.message}")
+            })
+        }
+        //  supportActionBar?.title = "Hello"
         // Initialize Firebase components
 
         val navHostFragment: NavHostFragment? =
@@ -27,25 +40,20 @@ class FeedActivity : AppCompatActivity() {
         bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.home -> {
-                    // Handle Home item click
                     navController?.navigate(R.id.action_global_postsFragment)
                     true
                 }
 
                 R.id.done -> {
-                    // Handle Selected item click
                     true
                 }
 
                 R.id.add -> {
-                    // Handle AddPost item click
                     navController?.navigate(R.id.action_global_addPostFragment3)
-
                     true
                 }
 
                 R.id.profile -> {
-                    // Handle Profile item click
                     navController?.navigate(R.id.action_global_profileFragment)
                     true
                 }
@@ -55,10 +63,20 @@ class FeedActivity : AppCompatActivity() {
         }
         auth = FirebaseAuth.getInstance()
         firestore = FirebaseFirestore.getInstance()
-
-        // Set greeting in ActionBar
-      //  setActionBarGreeting()
-
+    }
+    private fun navigateToProfileFragment(userData: User) {
+//        val bundle = Bundle().apply {
+//            putParcelable("USER_DATA", userData)
+//        }
+//
+//        val profileFragment = ProfileFragment().apply {
+//            arguments = bundle
+//        }
+//
+//        supportFragmentManager.beginTransaction()
+//            .replace(R.id.profile, profileFragment)
+//            .addToBackStack(null)
+//            .commit()
     }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         super.onCreateOptionsMenu(menu)

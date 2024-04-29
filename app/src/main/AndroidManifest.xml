@@ -17,14 +17,7 @@
         tools:targetApi="31">
         <activity
             android:name=".Modules.Feed.FeedActivity"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
+            android:exported="true" />
         <activity
             android:name=".Modules.Login.LoginActivity"
             android:exported="true" />
@@ -32,11 +25,14 @@
             android:name=".Modules.Register.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".Modules.User.UsersRcyclerViewActivity"
-            android:exported="true" />
-        <activity
             android:name=".MainActivity"
-            android:exported="true"/>
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".Modules.Posts.PostsRcyclerViewActivity"
             android:exported="true"/>
         <activity

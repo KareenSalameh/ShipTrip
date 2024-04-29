@@ -9,11 +9,13 @@ import com.google.firebase.firestore.FieldValue
 
 @Entity
 data class User(
-    @PrimaryKey val name: String,
-    val id: String,
-    val avatarUrl: String,
-    var isChecked: Boolean,
+    @PrimaryKey val userId: String,
+    val name: String,
+    val userImgUrl: String,
+    val email: String,
+    val location:String,
     var lastUpdated: Long ?= null) {
+    constructor() : this("", "", "", "", "", null)
 
     companion object{
         var lastUpdated: Long
@@ -29,19 +31,21 @@ data class User(
                     ?.putLong(GET_LAST_UPDATED,value)?.apply()
 
             }
-
+        const val ID_KEY = "userId"
         const val NAME_KEY = "name"
-        const val ID_KEY = "id"
-        const val AVATAR_URL_KEY = "avatarUrl"
-        const val ISCHECKED_KEY = "isChecked"
+        const val USER_URL_KEY = "userImgUrl"
+        const val EMAIL_KEY = "email"
+        const val LOCATION_KEY = "location"
         const val LAST_UPDATED = "lastUpdated"
         const val GET_LAST_UPDATED = "get_last_updated"
+
         fun fromJSON(json: Map<String,Any>): User {
-            val id = json[ID_KEY] as? String ?: ""
+            val userId = json[ID_KEY] as? String ?: ""
             val name = json[NAME_KEY] as? String ?: ""
-            val avatarUrl = json[AVATAR_URL_KEY] as? String ?: ""
-            val isChecked = json[ISCHECKED_KEY] as? Boolean ?: false
-            val u =  User(name, id, avatarUrl, isChecked)
+            val userImgUrl = json[USER_URL_KEY] as? String ?: ""
+            val email = json[EMAIL_KEY] as? String?: ""
+            val location = json[LOCATION_KEY] as? String?: ""
+            val u =  User(userId, name,userImgUrl, email, location)
 
             val timestamp: Timestamp?= json[LAST_UPDATED] as? Timestamp
             timestamp?.let{
@@ -55,10 +59,11 @@ data class User(
     val json: Map<String, Any>
         get(){
             return hashMapOf(
-                ID_KEY to id,
+                ID_KEY to userId,
                 NAME_KEY to name,
-                AVATAR_URL_KEY to avatarUrl,
-                ISCHECKED_KEY to isChecked,
+                USER_URL_KEY to userImgUrl,
+                EMAIL_KEY to email,
+                LOCATION_KEY to location,
                 LAST_UPDATED to FieldValue.serverTimestamp()
             )
         }
