@@ -1,4 +1,4 @@
-package com.example.androidapp2024.Modules.Posts
+package com.example.androidapp2024.Modules.Posts.PAdapter
 
 import android.os.Bundle
 import android.util.Log
@@ -7,12 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androidapp2024.Model.PostModel.PostFirestore
 import com.example.androidapp2024.Model.PostModel.Post
-import com.example.androidapp2024.Modules.Posts.PAdapter.PostsRecyclerAdapter
+import com.example.androidapp2024.Modules.Posts.PostsRcyclerViewActivity
 import com.example.androidapp2024.databinding.FragmentPostsBinding
 
 class PostsFragment : Fragment() {
@@ -45,7 +44,7 @@ class PostsFragment : Fragment() {
         postsRecyclerView?.setHasFixedSize(true)
         postsRecyclerView?.layoutManager = LinearLayoutManager(context)
 
-        adapter = PostsRecyclerAdapter(posts)
+        adapter = PostsRecyclerAdapter(posts,false)
         adapter?.listener = object : PostsRcyclerViewActivity.OnItemClickedListener {
             override fun OnItemClick(position: Int) {
                 Log.i("TAG", "Position Clicked $position")

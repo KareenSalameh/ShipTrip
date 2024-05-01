@@ -10,51 +10,57 @@ import android.widget.TextView
 
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import com.example.androidapp2024.Model.PostModel.Post
+import com.example.androidapp2024.Model.PostModel.PostFirebaseModel
+import com.google.firebase.firestore.FirebaseFirestore
+import de.hdodenhof.circleimageview.CircleImageView
 
 class FirstFragment : Fragment() {
-    private var textView: TextView? = null
-    private var title: String? = null
+    private lateinit var profileImageView: CircleImageView
+    private lateinit var tvName: TextView
+    private lateinit var tvEmail: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        val view =  inflater.inflate(R.layout.fragment_first, container, false)
+        val view = inflater.inflate(R.layout.fragment_first, container, false)
 
-        val firstTitle = arguments?.let {
-            FirstFragmentArgs.fromBundle(it).TITLE
+        profileImageView = view.findViewById(R.id.profileImage)
+        tvName = view.findViewById(R.id.tvNameOfUser2)
+        tvEmail = view.findViewById(R.id.tvEmailOfUser2)
+
+        val postId = arguments?.getString("postId")
+        if (postId != null) {
+            fetchPostData(postId)
         }
 
-        textView = view.findViewById(R.id.tvFragmentTitle)
-        textView?.text = firstTitle?: "Please assign title"
-        // textView.text = "Some new title"
-
-        val backButton: Button = view.findViewById(R.id.btnFirstFragment)
-        backButton.setOnClickListener{
-            Navigation.findNavController(view).popBackStack()
-        }
         return view
     }
 
-}
+    private fun fetchPostData(postId: String) {
+        FirebaseFirestore.getInstance().collection(PostFirebaseModel.POSTS_COLLECTION_PATH)
+            .document(postId)
+            .get()
+            .addOnSuccessListener { documentSnapshot ->
+                val post = documentSnapshot.toObject(Post::class.java)
+                if (post != null) {
+                    fetchUserData(post.userId)
+                }
+            }
+            .addOnFailureListener { exception ->
+                // Handle the failure case
+            }
+    }
 
-//companion object {
-//    /**
-//     * Use this factory method to create a new instance of
-//     * this fragment using the provided parameters.
-//     *
-//     * @param param1 Parameter 1.
-//     * @param param2 Parameter 2.
-//     * @return A new instance of fragment FirstFragment.
-//     */
-//    // TODO: Rename and change types and number of parameters
-//    @JvmStatic
-//    fun newInstance(param1: String, param2: String) =
-//        FirstFragment().apply {
-//            arguments = Bundle().apply {
-//                putString(ARG_PARAM1, param1)
-//                putString(ARG_PARAM2, param2)
-//            }
-//        }
-//}
+    private fun fetchUserData(userId: String) {
+        UserFirestore.getInstance().getUserData(userId, { user ->
+            // Update UI with user data
+            tvName.text = user.name
+            tvEmail.text = user.email
+            // Load profile image using Glide or Picasso library
+        }, { exception ->
+            // Handle error retrieving user data
+        })
+    }
+}

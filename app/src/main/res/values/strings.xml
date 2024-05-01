@@ -14,4 +14,8 @@
     <string name="to_location">Shipping TO</string>
     <string name="item_description">Item description</string>
     <string name="add_post">Post</string>
+    <string name="weight">weight</string>
+    <string name="paying">Paying?</string>
+    <string name="complete">ShipIt</string>
+    <string name="post_image_description">Post Image</string>
 </resources>

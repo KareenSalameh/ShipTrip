@@ -7,7 +7,7 @@ import com.example.androidapp2024.Model.PostModel.Post
 import com.example.androidapp2024.Modules.Posts.PostsRcyclerViewActivity
 import com.example.androidapp2024.R
 
-class PostsRecyclerAdapter(var posts: List<Post>?): RecyclerView.Adapter<PostViewHolder>(){
+class PostsRecyclerAdapter(var posts: List<Post>?, private val isMyPostsFragment: Boolean): RecyclerView.Adapter<PostViewHolder>(){
 
     var listener: PostsRcyclerViewActivity.OnItemClickedListener?= null
 
@@ -15,8 +15,12 @@ class PostsRecyclerAdapter(var posts: List<Post>?): RecyclerView.Adapter<PostVie
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.activity_post_row, parent,false)
-        return PostViewHolder(itemView, listener, posts)
+        if(isMyPostsFragment){
+            return PostViewHolder(itemView, listener, posts,true)
 
+        }else {
+            return PostViewHolder(itemView, listener, posts, false)
+        }
     }
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {

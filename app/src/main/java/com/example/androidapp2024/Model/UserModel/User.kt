@@ -3,6 +3,7 @@ package com.example.androidapp2024.Model.UserModel
 import android.content.Context
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.example.androidapp2024.Model.PostModel.Post
 import com.example.androidapp2024.base.MyApplication
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FieldValue
@@ -38,8 +39,10 @@ data class User(
         const val LOCATION_KEY = "location"
         const val LAST_UPDATED = "lastUpdated"
         const val GET_LAST_UPDATED = "get_last_updated"
+        const val IMG_KEY = "userImgUrl"
 
         fun fromJSON(json: Map<String,Any>): User {
+            val uri = json[Post.IMAGE_URL] as? String ?: ""
             val userId = json[ID_KEY] as? String ?: ""
             val name = json[NAME_KEY] as? String ?: ""
             val userImgUrl = json[USER_URL_KEY] as? String ?: ""
@@ -59,6 +62,7 @@ data class User(
     val json: Map<String, Any>
         get(){
             return hashMapOf(
+                IMG_KEY to userImgUrl,
                 ID_KEY to userId,
                 NAME_KEY to name,
                 USER_URL_KEY to userImgUrl,

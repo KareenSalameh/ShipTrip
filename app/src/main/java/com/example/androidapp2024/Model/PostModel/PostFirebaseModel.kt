@@ -67,4 +67,15 @@ class PostFirebaseModel {
                 Log.e("PostFirebaseModel", "Error adding post: ${exception.message}", exception)
             }
     }
+    fun updatePost(post: Post, callback: () -> Unit) {
+        db.collection(POSTS_COLLECTION_PATH)
+            .document(post.postId)
+            .set(post.json)
+            .addOnSuccessListener {
+                callback()
+            }
+            .addOnFailureListener { exception ->
+                Log.e("PostFirebaseModel", "Error updating post: ${exception.message}", exception)
+            }
+    }
 }

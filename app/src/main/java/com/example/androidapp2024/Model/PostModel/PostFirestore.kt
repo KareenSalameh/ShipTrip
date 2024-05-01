@@ -3,6 +3,7 @@ import android.os.Looper
 import android.util.Log
 import androidx.core.os.HandlerCompat
 import com.example.androidapp2024.dao.AppLocalDatabase
+import com.google.firebase.firestore.FirebaseFirestore
 import java.util.concurrent.Executors
 
 class PostFirestore constructor()  {
@@ -10,6 +11,8 @@ class PostFirestore constructor()  {
     private var executor = Executors.newSingleThreadExecutor()
     private var mainHandler = HandlerCompat.createAsync(Looper.getMainLooper())
     private val firebaseModel = PostFirebaseModel()
+    private val db = FirebaseFirestore.getInstance()
+
     companion object {
         val instance: PostFirestore = PostFirestore()
     }
@@ -50,6 +53,29 @@ class PostFirestore constructor()  {
         firebaseModel.addPost(post, callback)
 
     }
+    fun deletePost(post: Post, onSuccess: () -> Unit) {
+        db.collection(PostFirebaseModel.POSTS_COLLECTION_PATH)
+            .document(post.postId)
+            .delete()
+            .addOnSuccessListener {
+                onSuccess()
+            }
+            .addOnFailureListener { exception ->
+                Log.e("PostFirestore", "Error deleting post: ${exception.message}", exception)
+            }
+    }
+    fun updatePost(post: Post, callback: () -> Unit) {
+        db.collection(PostFirebaseModel.POSTS_COLLECTION_PATH)
+            .document(post.postId)
+            .set(post.json)
+            .addOnSuccessListener {
+                callback()
+            }
+            .addOnFailureListener { exception ->
+                Log.e("PostFirebaseModel", "Error updating post: ${exception.message}", exception)
+            }
+    }
+
 
 
 }

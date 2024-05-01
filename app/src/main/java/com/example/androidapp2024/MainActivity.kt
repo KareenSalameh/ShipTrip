@@ -21,19 +21,21 @@ class MainActivity : AppCompatActivity() {
         loginBtn.setOnClickListener {
             // Create an Intent to navigate to the LoginActivity
             val intent = Intent(this, LoginActivity::class.java)
-
-            // Start the LoginActivity
             startActivity(intent)
+            finish()
         }
 
         // Set OnClickListener for the Signup button
         signupBtn.setOnClickListener {
             // Create an Intent to navigate to the RegisterActivity
             val intent = Intent(this, RegisterActivity::class.java)
-
-            // Start the RegisterActivity
             startActivity(intent)
-            //finish()
+            finish()
+
         }
     }
 }
+
+
+
+

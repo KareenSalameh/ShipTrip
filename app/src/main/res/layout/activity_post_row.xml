@@ -2,505 +2,199 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/iPostListRowAvatar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?attr/selectableItemBackground"
-    android:contentDescription="TestDescription">
+    android:padding="16dp">
 
-    <ImageView
-        android:id="@+id/UploadPhoto"
-        android:layout_width="211dp"
-        android:layout_height="135dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DescriptionItemText"
-        app:srcCompat="@drawable/ship" />
-    <TextView
-        android:id="@+id/Paying"
-        android:layout_width="61dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="248dp"
-        android:layout_marginTop="24dp"
-        android:text="Paying?"
-        android:textColor="@color/black"
-        android:textSize="17sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Weight" />
+        <androidx.cardview.widget.CardView
+            android:id="@+id/userAvatarCard"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:cardCornerRadius="25dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/Weight"
-        android:layout_width="61dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="248dp"
-        android:layout_marginTop="24dp"
-        android:text="Weight:"
-        android:textColor="@color/black"
-        android:textSize="17sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DescriptionItemText" />
+                <ImageView
+                    android:id="@+id/userAvatar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ava"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="-5dp"
-        android:layout_marginTop="24dp"
-        android:text="kg"
-        app:layout_constraintStart_toEndOf="@+id/WeightCount"
-        app:layout_constraintTop_toBottomOf="@+id/DescriptionItemText" />
+        </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:id="@+id/WeightCount"
-        android:layout_width="22dp"
-        android:layout_height="22dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
-        android:text="wt"
-        app:layout_constraintStart_toEndOf="@+id/Weight"
-        app:layout_constraintTop_toBottomOf="@+id/DescriptionItemText" />
+        <androidx.cardview.widget.CardView
+            android:id="@+id/postCard"
+            android:layout_width="347dp"
+            android:layout_height="423dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginEnd="20dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/tvtoLocation"
-        android:layout_width="161dp"
-        android:layout_height="29dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="50dp"
-        android:background="@drawable/box"
-        android:text="tolocation"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.773"
-        app:layout_constraintStart_toEndOf="@+id/tvfromLocation"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
-        app:layout_constraintVertical_bias="0.0" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="56dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="88dp"
-        android:text="Ship to:"
-        android:textColor="@color/black"
-        android:textSize="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/UploadPhoto" />
+                        <TextView
+                            android:id="@+id/ItemName"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/btn1"
+                            android:text="Item Name"
+                            android:textAlignment="center"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tvfromLocation"
-        android:layout_width="169dp"
-        android:layout_height="31dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="25dp"
-        android:background="@drawable/box"
-        android:text="fromLocation"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
-        app:layout_constraintVertical_bias="0.0" />
+                        <TextView
+                            android:id="@+id/DescriptionItemText"
+                            android:layout_width="226dp"
+                            android:layout_height="34dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginEnd="8dp"
+                            android:text="Description"
+                            android:textAlignment="center"
+                            android:textColor="#BB6962"
+                            android:textIsSelectable="false"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/ItemName" />
 
-    <TextView
-        android:id="@+id/PayOrNotText"
-        android:layout_width="62dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="28dp"
-        android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/Paying"
-        app:layout_constraintTop_toBottomOf="@+id/WeightCount" />
+                        <ImageView
+                            android:id="@+id/UploadPhoto"
+                            android:layout_width="wrap_content"
+                            android:layout_height="200dp"
+                            android:layout_marginTop="10dp"
+                            android:scaleType="centerCrop"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/DescriptionItemText"
+                            app:srcCompat="@drawable/ship" />
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="77dp"
-        android:layout_height="21dp"
-        android:layout_marginStart="75dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="135dp"
-        android:text="Ship from:"
-        android:textColor="@color/black"
-        android:textSize="16dp"
-        app:layout_constraintEnd_toStartOf="@+id/textView6"
-        app:layout_constraintHorizontal_bias="0.55"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/UploadPhoto" />
+                        <TextView
+                            android:id="@+id/tvfromLocation"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:background="@drawable/box"
+                            android:text="fromLocation"
+                            android:textAlignment="center"
+                            app:layout_constraintEnd_toStartOf="@id/tvtoLocation"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/UploadPhoto" />
 
-    <TextView
-        android:id="@+id/ItemName"
-        android:layout_width="141dp"
-        android:layout_height="33dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/btn1"
-        android:text="Item Name"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+                        <TextView
+                            android:id="@+id/tvtoLocation"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:background="@drawable/box"
+                            android:text="tolocation"
+                            android:textAlignment="center"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/tvfromLocation"
+                            app:layout_constraintTop_toTopOf="@id/tvfromLocation" />
 
-    <TextView
-        android:id="@+id/TheItemnametv"
-        android:layout_width="107dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginBottom="40dp"
-        android:text="Description:"
-        android:textColor="@color/black"
-        android:textSize="18dp"
-        app:layout_constraintBottom_toTopOf="@+id/UploadPhoto"
-        app:layout_constraintEnd_toStartOf="@+id/DescriptionItemText"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+                        <ImageButton
+                            android:id="@+id/iconEdit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="9dp"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tvtoLocation"
+                            app:srcCompat="@drawable/baseline_edit_24" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton5"
-        android:layout_width="40dp"
-        android:layout_height="37dp"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="#BB6962"
-        android:clickable="true"
-        app:fabCustomSize="39dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.957"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/baseline_done_24"
-        app:tint="@color/white" />
+                        <ImageButton
+                            android:id="@+id/icondelete"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/iconEdit"
+                            app:srcCompat="@drawable/baseline_delete_24" />
 
-    <ImageButton
-        android:id="@+id/icondelete"
-        android:layout_width="31dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="6dp"
-        android:layout_marginTop="-5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.589"
-        app:layout_constraintStart_toEndOf="@+id/DescriptionItemText"
-        app:layout_constraintTop_toBottomOf="@+id/iconEdit"
-        app:srcCompat="@drawable/baseline_delete_24" />
+                        <TextView
+                            android:id="@+id/textView3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="16dp"
+                            android:text="Paying?"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tvfromLocation" />
 
-    <TextView
-        android:id="@+id/DescriptionItemText"
-        android:layout_width="216dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="76dp"
-        android:text="Description"
-        android:textAlignment="center"
-        android:textColor="#BB6962"
-        android:textIsSelectable="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ItemName" />
+                        <TextView
+                            android:id="@+id/PayOrNotText"
+                            android:layout_width="42dp"
+                            android:layout_height="21dp"
+                            android:layout_marginStart="2dp"
+                            android:layout_marginTop="16dp"
+                            android:text="TextView"
+                            app:layout_constraintStart_toEndOf="@+id/textView3"
+                            app:layout_constraintTop_toBottomOf="@+id/tvfromLocation" />
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/floatingActionButton5"
+                            android:layout_width="40dp"
+                            android:layout_height="37dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginBottom="-2dp"
+                            android:backgroundTint="#BB6962"
+                            android:clickable="true"
+                            app:fabCustomSize="39dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.502"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tvfromLocation"
+                            app:srcCompat="@drawable/baseline_car_24"
+                            app:tint="@color/white" />
+
+                        <TextView
+                            android:id="@+id/Weight"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="100dp"
+                            android:layout_marginTop="16dp"
+                            android:text="Weight:"
+                            app:layout_constraintStart_toEndOf="@+id/PayOrNotText"
+                            app:layout_constraintTop_toBottomOf="@+id/tvtoLocation" />
+
+                        <TextView
+                            android:id="@+id/WeightCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:text="kg"
+                            app:layout_constraintStart_toEndOf="@+id/Weight"
+                            app:layout_constraintTop_toBottomOf="@+id/tvtoLocation" />
+
+                        <TextView
+                            android:id="@+id/TheItemnametv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginEnd="6dp"
+                            android:text="Description:"
+                            app:layout_constraintEnd_toStartOf="@+id/DescriptionItemText"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/ItemName" />
 
 
-    <ImageButton
-        android:id="@+id/iconEdit"
-        android:layout_width="31dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="88dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toEndOf="@+id/ItemName"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/baseline_edit_24" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <View
-        android:id="@+id/view"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginBottom="4dp"
-        android:background="@drawable/btn1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Space
-        android:id="@+id/space"
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.1" />
-
+        </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-<!--<?xml version="1.0" encoding="utf-8"?>-->
-<!--<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
-<!--    xmlns:tools="http://schemas.android.com/tools"-->
-<!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="wrap_content"-->
-<!--    android:layout_marginHorizontal="16dp"-->
-<!--    android:layout_marginVertical="8dp"-->
-<!--    app:cardCornerRadius="12dp"-->
-<!--    app:cardElevation="6dp">-->
-
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="vertical"-->
-<!--        android:padding="16dp">-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/ItemName"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"-->
-<!--            android:background="@drawable/btn1"-->
-<!--            android:text="Item Name"-->
-<!--            android:textAlignment="center"-->
-<!--            android:textColor="@color/white"-->
-<!--            tools:text="Item Name" />-->
-
-<!--        <ImageView-->
-<!--            android:id="@+id/UploadPhoto"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="200dp"-->
-<!--            android:layout_marginVertical="8dp"-->
-<!--            android:contentDescription="@string/post_image_description"-->
-<!--            android:scaleType="centerCrop"-->
-<!--            app:srcCompat="@drawable/ship" />-->
-
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:orientation="horizontal">-->
-
-<!--            <LinearLayout-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_weight="1"-->
-<!--                android:orientation="vertical">-->
-
-<!--                <TextView-->
-<!--                    android:id="@+id/Weight"-->
-<!--                    android:text="Weight"-->
-<!--                    android:textColor="@color/black"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />-->
-
-<!--                <TextView-->
-<!--                    android:id="@+id/WeightCount"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"-->
-<!--                    tools:text="5 kg" />-->
-
-
-
-<!--            </LinearLayout>-->
-
-<!--            <LinearLayout-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_weight="1"-->
-<!--                android:orientation="vertical">-->
-
-<!--                <TextView-->
-<!--                    android:id="@+id/Paying"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="Paying"-->
-<!--                    android:textColor="@color/black"-->
-<!--                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"/>-->
-
-<!--                <TextView-->
-<!--                    android:id="@+id/PayOrNotText"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"-->
-<!--                    tools:text="Yes" />-->
-
-<!--            </LinearLayout>-->
-
-<!--        </LinearLayout>-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/DescriptionItemText"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginVertical="8dp"-->
-<!--            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"-->
-<!--            tools:text="Description" />-->
-
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:orientation="horizontal">-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/tvfromLocation"-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_weight="1"-->
-<!--                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"-->
-<!--                tools:text="From Location" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/tvtoLocation"-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_weight="1"-->
-<!--                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"-->
-<!--                tools:text="To Location" />-->
-
-<!--        </LinearLayout>-->
-
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:gravity="center_horizontal">-->
-
-<!--            <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--                android:id="@+id/floatingActionButton4"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginTop="16dp"-->
-<!--                android:backgroundTint="#BB6962"-->
-<!--                android:clickable="true"-->
-<!--                app:tint= "@color/white"-->
-<!--                app:srcCompat="@drawable/baseline_add_24"-->
-<!--                android:contentDescription="Add item"/>-->
-
-<!--        </LinearLayout>-->
-<!--    </LinearLayout>-->
-
-<!--</com.google.android.material.card.MaterialCardView>-->
-<!--<?xml version="1.0" encoding="utf-8"?>-->
-<!--<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
-<!--    xmlns:tools="http://schemas.android.com/tools"-->
-<!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="wrap_content"-->
-<!--    android:layout_marginHorizontal="16dp"-->
-<!--    android:layout_marginVertical="8dp"-->
-<!--    app:cardCornerRadius="8dp"-->
-<!--    app:cardElevation="4dp">-->
-
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="vertical"-->
-<!--        android:padding="16dp">-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/ItemName"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"-->
-<!--            android:textColor="@color/black"-->
-<!--            tools:text="Item Name" />-->
-
-<!--        <ImageView-->
-<!--            android:id="@+id/UploadPhoto"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="200dp"-->
-<!--            android:layout_marginVertical="8dp"-->
-<!--            android:contentDescription="@string/post_image_description"-->
-<!--            android:scaleType="centerCrop"-->
-<!--            app:srcCompat="@drawable/ship" />-->
-
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:orientation="horizontal">-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/Weight"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginEnd="8dp"-->
-<!--                android:text="@string/weight"-->
-<!--                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"-->
-<!--                android:textColor="@color/gray" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/WeightCount"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"-->
-<!--                tools:text="5 kg" />-->
-
-<!--        </LinearLayout>-->
-
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:orientation="horizontal">-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/Paying"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginEnd="8dp"-->
-<!--                android:text="@string/paying"-->
-<!--                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"-->
-<!--                android:textColor="@color/gray" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/PayOrNotText"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"-->
-<!--                tools:text="Yes" />-->
-
-<!--        </LinearLayout>-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/DescriptionItemText"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginVertical="8dp"-->
-<!--            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"-->
-<!--            tools:text="Description" />-->
-
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:orientation="horizontal">-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/tvfromLocation"-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_weight="1"-->
-<!--                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"-->
-<!--                tools:text="From Location" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/tvtoLocation"-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_weight="1"-->
-<!--                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"-->
-<!--                tools:text="To Location" />-->
-
-<!--        </LinearLayout>-->
-
-<!--        <com.google.android.material.button.MaterialButton-->
-<!--            android:id="@+id/floatingActionButton"-->
-<!--            style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
-<!--            android:layout_width="145dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="end"-->
-<!--            android:layout_marginTop="16dp"-->
-<!--            android:text="@string/complete"-->
-<!--            android:backgroundTint="@color/sky_blue"-->
-<!--            app:icon="@drawable/baseline_done_24"-->
-<!--            app:iconGravity="textStart" />-->
-
-<!--    </LinearLayout>-->
-
-<!--</com.google.android.material.card.MaterialCardView>-->
