@@ -43,12 +43,12 @@ class PostViewHolder(
         fromLocationTextView = itemView.findViewById(R.id.tvfromLocation)
         toLocationTextView = itemView.findViewById(R.id.tvtoLocation)
         itemDescriptionTextView = itemView.findViewById(R.id.DescriptionItemText)
-      //  payForShippingSwitch = itemView.findViewById(R.id.pa)
-      //  payForShippingCheckBox = itemView.findViewById(R.id.checkBox)
+        //  payForShippingSwitch = itemView.findViewById(R.id.pa)
+        //  payForShippingCheckBox = itemView.findViewById(R.id.checkBox)
         payOrNotText = itemView.findViewById(R.id.PayOrNotText)
         floatingActionButton = itemView.findViewById(R.id.floatingActionButton5)
 
-       // postContentTextView = itemView.findViewById(R.id.tvPostContent)
+        // postContentTextView = itemView.findViewById(R.id.tvPostContent)
         editPostImageView = itemView.findViewById(R.id.iconEdit)
         deletePostImageView = itemView.findViewById(R.id.icondelete)
 

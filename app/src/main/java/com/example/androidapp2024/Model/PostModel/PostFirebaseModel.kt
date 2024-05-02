@@ -38,7 +38,7 @@ class PostFirebaseModel {
             }
     }
 
-//    fun addPost(post: Post, callback: () -> Unit) {
+    //    fun addPost(post: Post, callback: () -> Unit) {
 //        db.collection(POSTS_COLLECTION_PATH).document(post.postId).set(post.json).addOnSuccessListener {
 //            callback()
 //        }
@@ -65,17 +65,6 @@ class PostFirebaseModel {
             .addOnFailureListener { exception ->
                 // Handle the failure case
                 Log.e("PostFirebaseModel", "Error adding post: ${exception.message}", exception)
-            }
-    }
-    fun updatePost(post: Post, callback: () -> Unit) {
-        db.collection(POSTS_COLLECTION_PATH)
-            .document(post.postId)
-            .set(post.json)
-            .addOnSuccessListener {
-                callback()
-            }
-            .addOnFailureListener { exception ->
-                Log.e("PostFirebaseModel", "Error updating post: ${exception.message}", exception)
             }
     }
 }

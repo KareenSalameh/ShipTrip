@@ -8,8 +8,8 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profileImage"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="102dp"
+        android:layout_height="112dp"
         android:layout_marginTop="32dp"
         android:src="@drawable/baseline_account_circle_24"
         app:civ_border_color="#FF000000"
@@ -21,22 +21,22 @@
         android:id="@+id/btnSelectImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Select Profile Picture"
+        android:text="Select New Picture"
         app:layout_constraintTop_toBottomOf="@id/profileImage"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <EditText
         android:id="@+id/etName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
+        android:layout_width="202dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="80dp"
         android:hint="Name"
         android:inputType="textPersonName"
         android:maxLines="1"
         android:textColorHint="@android:color/darker_gray"
         app:layout_constraintEnd_toEndOf="@+id/profileImage"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.538"
         app:layout_constraintStart_toStartOf="@+id/profileImage"
         app:layout_constraintTop_toBottomOf="@+id/profileImage" />
 
@@ -44,7 +44,7 @@
         android:id="@+id/etLocation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         android:hint="Location"
         android:inputType="text"
         android:maxLines="1"
@@ -64,7 +64,7 @@
         android:maxLines="1"
         android:textColorHint="@android:color/darker_gray"
         app:layout_constraintEnd_toEndOf="@+id/etName"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/etName"
         app:layout_constraintTop_toBottomOf="@+id/etName" />
 
@@ -83,8 +83,8 @@
 
     <Button
         android:id="@+id/btnCancel2"
-        android:layout_width="149dp"
-        android:layout_height="48dp"
+        android:layout_width="203dp"
+        android:layout_height="51dp"
         android:layout_marginStart="35dp"
         android:layout_marginTop="80dp"
         android:layout_marginEnd="27dp"

@@ -65,18 +65,7 @@ class FeedActivity : AppCompatActivity() {
         firestore = FirebaseFirestore.getInstance()
     }
     private fun navigateToProfileFragment(userData: User) {
-//        val bundle = Bundle().apply {
-//            putParcelable("USER_DATA", userData)
-//        }
-//
-//        val profileFragment = ProfileFragment().apply {
-//            arguments = bundle
-//        }
-//
-//        supportFragmentManager.beginTransaction()
-//            .replace(R.id.profile, profileFragment)
-//            .addToBackStack(null)
-//            .commit()
+
     }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         super.onCreateOptionsMenu(menu)

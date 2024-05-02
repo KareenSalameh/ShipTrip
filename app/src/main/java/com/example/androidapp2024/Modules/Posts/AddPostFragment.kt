@@ -25,7 +25,7 @@ import com.google.firebase.storage.FirebaseStorage
 class AddPostFragment : Fragment() {
     val db = FirebaseFirestore.getInstance()
     val postId = db.collection("Posts").document().id
-   // val userId = db.collection("User").document().id
+    // val userId = db.collection("User").document().id
 
     private val IMAGE_PICK_CODE = 1000
     private var imageUri: Uri? = null

@@ -112,10 +112,10 @@ class EditPostFragment : Fragment() {
                 postId = postId!!
             )
 
-            firebaseModel.updatePost(updatedPost) {
-                // Post updated successfully
-                // Navigate back or update the UI as needed
-            }
+//            firebaseModel.updatePost(updatedPost) {
+//                // Post updated successfully
+//                // Navigate back or update the UI as needed
+//            }
         }
     }
 }
