@@ -6,42 +6,25 @@
     android:layout_height="wrap_content"
     android:padding="16dp">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/userAvatarCard"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            app:cardCornerRadius="25dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-                <ImageView
-                    android:id="@+id/userAvatar"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/ava"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/postCard"
-            android:layout_width="347dp"
-            android:layout_height="423dp"
-            android:layout_marginTop="48dp"
-            android:layout_marginEnd="20dp"
+            android:layout_width="355dp"
+            android:layout_height="467dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="10dp"
             app:cardCornerRadius="16dp"
             app:cardElevation="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="16dp">
+                    android:layout_width="355dp"
+                    android:layout_height="448dp"
+                    android:padding="15dp">
 
                         <TextView
                             android:id="@+id/ItemName"
@@ -54,6 +37,7 @@
                             android:textColor="@color/white"
                             android:textSize="20sp"
                             app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
@@ -61,7 +45,7 @@
                             android:id="@+id/DescriptionItemText"
                             android:layout_width="226dp"
                             android:layout_height="34dp"
-                            android:layout_marginTop="5dp"
+                            android:layout_marginTop="12dp"
                             android:layout_marginEnd="8dp"
                             android:text="Description"
                             android:textAlignment="center"
@@ -83,8 +67,8 @@
 
                         <TextView
                             android:id="@+id/tvfromLocation"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_width="152dp"
+                            android:layout_height="25dp"
                             android:layout_marginTop="16dp"
                             android:background="@drawable/box"
                             android:text="fromLocation"
@@ -95,8 +79,8 @@
 
                         <TextView
                             android:id="@+id/tvtoLocation"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_width="149dp"
+                            android:layout_height="25dp"
                             android:layout_marginStart="16dp"
                             android:background="@drawable/box"
                             android:text="tolocation"
@@ -147,18 +131,19 @@
 
                         <com.google.android.material.floatingactionbutton.FloatingActionButton
                             android:id="@+id/floatingActionButton5"
-                            android:layout_width="40dp"
-                            android:layout_height="37dp"
-                            android:layout_marginTop="15dp"
+                            android:layout_width="47dp"
+                            android:layout_height="42dp"
+                            android:layout_marginTop="25dp"
                             android:layout_marginBottom="-2dp"
                             android:backgroundTint="#BB6962"
                             android:clickable="true"
-                            app:fabCustomSize="39dp"
+                            app:fabCustomSize="42dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.502"
+                            app:layout_constraintHorizontal_bias="0.498"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/tvfromLocation"
+                            app:layout_constraintVertical_bias="0.275"
                             app:srcCompat="@drawable/baseline_car_24"
                             app:tint="@color/white" />
 
@@ -166,7 +151,7 @@
                             android:id="@+id/Weight"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="100dp"
+                            android:layout_marginStart="112dp"
                             android:layout_marginTop="16dp"
                             android:text="Weight:"
                             app:layout_constraintStart_toEndOf="@+id/PayOrNotText"
@@ -185,12 +170,25 @@
                             android:id="@+id/TheItemnametv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
+                            android:layout_marginTop="12dp"
                             android:layout_marginEnd="6dp"
                             android:text="Description:"
                             app:layout_constraintEnd_toStartOf="@+id/DescriptionItemText"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/ItemName" />
+
+                        <TextView
+                            android:id="@+id/textView4"
+                            android:layout_width="133dp"
+                            android:layout_height="24dp"
+                            android:text="Click to ShipTrip"
+                            android:textAlignment="center"
+                            android:textColor="@color/black"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/floatingActionButton5"
+                            app:layout_constraintVertical_bias="0.0" />
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
