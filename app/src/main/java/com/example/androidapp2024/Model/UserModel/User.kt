@@ -16,7 +16,7 @@ data class User(
     val email: String,
     val location:String,
     var lastUpdated: Long ?= null) {
-    constructor() : this("", "", "", "", "", null)
+    constructor() : this("", "null", "", "null@gmail.com", "", null)
 
     companion object{
         var lastUpdated: Long
@@ -56,7 +56,6 @@ data class User(
             }
             return u
         }
-
     }
 
     val json: Map<String, Any>

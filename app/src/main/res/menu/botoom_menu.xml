@@ -6,10 +6,9 @@
         android:title="Home"
         android:icon="@drawable/baseline_home_24" />
     <item
-        android:id="@+id/done"
-        android:title="Selected"
-        android:icon="@drawable/baseline_done_24"/>
-
+        android:id="@+id/map"
+        android:title="Map"
+        android:icon="@drawable/baseline_map"/>
 
     <item
         android:id="@+id/add"

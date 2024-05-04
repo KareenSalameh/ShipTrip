@@ -8,7 +8,7 @@
     tools:context=".FirstFragment">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profileImage"
+        android:id="@+id/profileImage3"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginTop="96dp"
@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvLocationOfUser2"
+        android:id="@+id/tvLocationOfUser3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -29,10 +29,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.515"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvEmailOfUser2" />
+        app:layout_constraintTop_toBottomOf="@+id/tvEmailOfUser3" />
 
     <TextView
-        android:id="@+id/tvEmailOfUser2"
+        android:id="@+id/tvEmailOfUser3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -40,10 +40,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.522"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvNameOfUser2" />
+        app:layout_constraintTop_toBottomOf="@+id/tvNameOfUser3" />
 
     <TextView
-        android:id="@+id/tvNameOfUser2"
+        android:id="@+id/tvNameOfUser3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -53,7 +53,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.518"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileImage" />
+        app:layout_constraintTop_toBottomOf="@+id/profileImage3" />
 
     <Button
         android:id="@+id/btnLogout"
@@ -67,6 +67,6 @@
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvLocationOfUser2" />
+        app:layout_constraintTop_toBottomOf="@+id/tvLocationOfUser3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -46,6 +46,10 @@ class MyPostsFragment : Fragment() {
                 // TODO: Implement post click action if needed
             }
 
+            override fun onDeletePostClicked(post: Post?) {
+                TODO("Not yet implemented")
+            }
+
         }
 
     }
@@ -62,7 +66,7 @@ class MyPostsFragment : Fragment() {
     private fun fetchUserPosts() {
         val currentUserId = FirebaseAuth.getInstance().currentUser?.uid
         if (currentUserId != null) {
-            PostFirestore.instance.getAllPosts { posts ->
+            PostFirestore.getInstance().getAllPosts { posts ->
                 postsList.clear()
                 val userPosts = posts.filter { it.userId == currentUserId }
                 if (userPosts.isNotEmpty()) {

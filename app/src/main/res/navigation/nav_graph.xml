@@ -65,10 +65,17 @@
         android:label="fragment_my_posts"
         tools:layout="@layout/fragment_my_posts" />
     <action android:id="@+id/action_global_myPostsFragment" app:destination="@id/myPostsFragment" />
+
     <fragment
         android:id="@+id/editPostFragment"
         android:name="com.example.androidapp2024.Modules.Posts.EditPostFragment"
         android:label="EditPostFragment" />
     <action android:id="@+id/action_global_editPostFragment" app:destination="@id/editPostFragment" />
     <action android:id="@+id/action_global_firstFragment" app:destination="@id/firstFragment" />
+    <fragment
+        android:id="@+id/mapFragment2"
+        android:name="com.example.androidapp2024.mapFragment"
+        android:label="fragment_map"
+        tools:layout="@layout/fragment_map" /><action android:id="@+id/action_global_mapFragment2" app:destination="@id/mapFragment2"/>
+
 </navigation>

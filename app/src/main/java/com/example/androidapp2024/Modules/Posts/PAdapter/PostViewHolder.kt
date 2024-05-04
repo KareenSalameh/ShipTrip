@@ -18,7 +18,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class PostViewHolder(
     val itemView: View,
-    val listener: PostsRcyclerViewActivity.OnItemClickedListener?,
+    var listener: PostsRcyclerViewActivity.OnItemClickedListener?,
     var posts: List<Post>?,
     isMyPostsFragment: Boolean
 ) : RecyclerView.ViewHolder(itemView) {
@@ -35,6 +35,7 @@ class PostViewHolder(
     private var deletePostImageView: ImageView? = null
     private var post: Post? = null
     private var floatingActionButton: FloatingActionButton? = null
+    private var ClickToShipTextView : TextView?= null
 
 
     init {
@@ -47,11 +48,9 @@ class PostViewHolder(
         //  payForShippingCheckBox = itemView.findViewById(R.id.checkBox)
         payOrNotText = itemView.findViewById(R.id.PayOrNotText)
         floatingActionButton = itemView.findViewById(R.id.floatingActionButton5)
-
-        // postContentTextView = itemView.findViewById(R.id.tvPostContent)
         editPostImageView = itemView.findViewById(R.id.iconEdit)
         deletePostImageView = itemView.findViewById(R.id.icondelete)
-
+        ClickToShipTextView = itemView.findViewById(R.id.tvClickToShip)
         itemImageView = itemView.findViewById(R.id.UploadPhoto)
         payForShippingCheckBox?.setOnCheckedChangeListener { buttonView, isChecked ->
             updatePayOrNotText(isChecked)
@@ -63,20 +62,30 @@ class PostViewHolder(
         }
         if (isMyPostsFragment) {
             floatingActionButton?.visibility = View.GONE
+            ClickToShipTextView?.visibility = View.GONE
             editPostImageView?.visibility = View.VISIBLE
             deletePostImageView?.visibility = View.VISIBLE
         } else {
             floatingActionButton?.visibility = View.VISIBLE
+            ClickToShipTextView?.visibility = View.VISIBLE
             editPostImageView?.visibility = View.GONE
             deletePostImageView?.visibility = View.GONE
         }
         editPostImageView?.setOnClickListener {
-            navigateToEditPost()
+          //  navigateToEditPost()
+            findNavController(itemView).navigate(R.id.action_global_editPostFragment)
+
         }
-//
-//        deletePostImageView?.setOnClickListener {
-//            listener?.onDeletePostClicked(post)
-//        }
+        floatingActionButton?.setOnClickListener {
+            val bundle = Bundle().apply {
+                putString("post", post?.postId)
+            }
+            findNavController(itemView).navigate(R.id.action_postsFragment_to_firstFragment, bundle)
+        }
+
+        deletePostImageView?.setOnClickListener {
+            listener?.onDeletePostClicked(post)
+        }
     }
     private fun navigateToEditPost() {
 

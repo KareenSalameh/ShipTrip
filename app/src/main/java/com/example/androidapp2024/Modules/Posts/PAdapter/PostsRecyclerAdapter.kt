@@ -14,18 +14,23 @@ class PostsRecyclerAdapter(var posts: List<Post>?, private val isMyPostsFragment
     override fun getItemCount(): Int = posts?.size ?: 0
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.activity_post_row, parent,false)
-        if(isMyPostsFragment){
-            return PostViewHolder(itemView, listener, posts,true)
-
-        }else {
-            return PostViewHolder(itemView, listener, posts, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.activity_post_row, parent, false)
+        val viewHolder = if (isMyPostsFragment) {
+            PostViewHolder(itemView, listener, posts, true)
+        } else {
+            PostViewHolder(itemView, listener, posts, false)
         }
+        viewHolder.listener = listener // Set the listener here
+        return viewHolder
     }
-
+    fun updatePosts(posts: List<Post>) {
+        this.posts = posts
+        notifyDataSetChanged()
+    }
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
         val post = posts?.get(position)
         holder.bind(post)
+       // holder.listener = listener // Pass the listener object to the ViewHolder
     }
 
 

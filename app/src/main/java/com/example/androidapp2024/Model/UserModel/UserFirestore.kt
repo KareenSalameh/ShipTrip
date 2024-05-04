@@ -27,8 +27,10 @@ class UserFirestore private constructor() {
         userDocRef.get()
             .addOnSuccessListener { documentSnapshot ->
                 if (documentSnapshot.exists()) {
+//                    val userData = documentSnapshot.toObject(User::class.java)
+//                    onSuccess(userData!!)
                     val userData = documentSnapshot.toObject(User::class.java)
-                    onSuccess(userData!!)
+                    userData?.let { onSuccess(it) } ?: onFailure(Exception("User data not found"))
                 } else {
                     onFailure(Exception("User data not found"))
                 }

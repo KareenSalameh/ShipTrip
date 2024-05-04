@@ -76,7 +76,6 @@ class ProfileFragment : Fragment() {
             Log.e("TAG", "User ID is null")
         }
     }
-
     private fun fetchUserData(userId: String) {
         userFirestore.getUserData(userId,
             onSuccess = { user ->
@@ -87,7 +86,6 @@ class ProfileFragment : Fragment() {
             }
         )
     }
-
 
     private fun displayUserData(user: User) {
         nameTextView.text = user.name

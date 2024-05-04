@@ -33,7 +33,7 @@ class PostsFragment : Fragment() {
         postprogressBar = binding.postprogressBar //view.findViewById(R.id.progressBar)
         postprogressBar?.visibility = View.VISIBLE
 
-        PostFirestore.instance.getAllPosts { posts ->
+        PostFirestore.getInstance().getAllPosts { posts ->
             this.posts = posts
             adapter?.posts = posts
             adapter?.notifyDataSetChanged()
@@ -54,6 +54,10 @@ class PostsFragment : Fragment() {
                 Log.i("TAG", "Post $post")
                 // Handle post click action here
             }
+
+            override fun onDeletePostClicked(post: Post?) {
+                Log.i("TAG", "delete $post")
+            }
         }
 
         postsRecyclerView?.adapter = adapter
@@ -65,7 +69,7 @@ class PostsFragment : Fragment() {
 
         postprogressBar?.visibility = View.VISIBLE
 
-        PostFirestore.instance.getAllPosts { posts ->
+        PostFirestore.getInstance().getAllPosts { posts ->
             this.posts = posts
             adapter?.posts = posts
             adapter?.notifyDataSetChanged()

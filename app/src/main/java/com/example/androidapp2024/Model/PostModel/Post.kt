@@ -12,16 +12,21 @@ data class Post(
     @PrimaryKey var postId: String,
     var itemName: String,
     val itemImageUri: String, // Store the URI or path of the item image
-    val itemWeight: String,
-    val payForShipping: Boolean,
-    val fromLocation: String,
-    val toLocation: String,
-    val itemDescription: String,
+    var itemWeight: String,
+    var payForShipping: Boolean,
+    var fromLocation: String,
+    var toLocation: String,
+    var itemDescription: String,
     val author: String, // You might want to add an author field
     val userId: String,
     val datePosted: Long = System.currentTimeMillis(),
     var lastUpdated: Long? = null
 ) {
+  //  constructor() : this()
+
+        constructor() : this(
+        "", "", "", "", false, "", "", "", "", "", 0L, 0L // Initialize lastUpdated to 0L
+    )
     companion object {
         var lastUpdated: Long
             get() {
@@ -60,6 +65,7 @@ data class Post(
             val from = json[FROM_LOCATION] as? String ?: ""
             val to = json[TO_LOCATION] as? String ?: ""
             val userName = json[POST_AUTHOR] as? String ?: ""
+
             val post = Post(
                 itemName = itemName,
                 userId = userId,
@@ -73,8 +79,10 @@ data class Post(
                 toLocation = to,
                 author = userName
             )
-            val timestamp: Timestamp? = json[LAST_UPDATED] as? Timestamp
-            timestamp?.let { post.lastUpdated = it.seconds }
+
+            val timestamp = json[LAST_UPDATED] as? com.google.firebase.Timestamp
+            post.lastUpdated = timestamp?.toDate()?.time ?: 0L
+
             return post
         }
     }
