@@ -16,6 +16,8 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.util.Log
+import android.widget.ImageView
+import com.bumptech.glide.Glide
 
 import com.google.firebase.storage.FirebaseStorage
 
@@ -29,6 +31,7 @@ class EditProfileFragment : Fragment() {
     private lateinit var btnSelectImage: Button
     private val IMAGE_PICK_CODE = 1000
     private var imageUri: Uri? = null
+    private var profileImage: ImageView?= null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,6 +51,7 @@ class EditProfileFragment : Fragment() {
         etEmail = view.findViewById(R.id.etEmail)
         etLocation = view.findViewById(R.id.etLocation)
         btnSelectImage = view.findViewById(R.id.btnSelectImage)
+        profileImage = view.findViewById(R.id.profileImage)
         return view
     }
 
@@ -98,7 +102,6 @@ class EditProfileFragment : Fragment() {
                 btnSave.isEnabled = true // Enable the save button
                 if (task.isSuccessful) {
                     val downloadUri = task.result
-                    // Update the user's profile with the image URL and save changes
                     updateUserProfile(downloadUri)
                 } else {
                     val exception = task.exception
@@ -127,7 +130,7 @@ class EditProfileFragment : Fragment() {
                 UserFirestore.getInstance().updateUser(updatedUser,
                     onSuccess = {
                         Toast.makeText(requireContext(), "Profile updated successfully", Toast.LENGTH_SHORT).show()
-                        findNavController().popBackStack()
+                       // findNavController().popBackStack()
                     },
                     onFailure = { exception ->
                         Toast.makeText(requireContext(), "Failed to update profile: ${exception.message}", Toast.LENGTH_SHORT).show()
@@ -155,6 +158,7 @@ class EditProfileFragment : Fragment() {
 
                 UserFirestore.getInstance().updateUser(updatedUser, onSuccess = {
                     Toast.makeText(requireContext(), "Profile updated successfully", Toast.LENGTH_SHORT).show()
+                   // updateProfileUI(updatedUser)
                     findNavController().popBackStack()
                 }, onFailure = { exception ->
                     Toast.makeText(requireContext(), "Failed to update profile: ${exception.message}", Toast.LENGTH_SHORT).show()
@@ -166,4 +170,15 @@ class EditProfileFragment : Fragment() {
             Toast.makeText(requireContext(), "No user is currently authenticated", Toast.LENGTH_SHORT).show()
         }
     }
+//    private fun updateProfileUI(user: User) {
+//        // Update EditText fields with user data
+//        etName.setText(user.name)
+//        etEmail.setText(user.email)
+//        etLocation.setText(user.location)
+//
+//        // Load the user image into ImageView using Glide or another image loading library
+//        Glide.with(this)
+//            .load(user.userImgUrl)
+////            .into(profileImage!!)
+//    }
 }

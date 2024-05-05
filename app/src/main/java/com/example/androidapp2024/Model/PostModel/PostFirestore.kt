@@ -80,55 +80,29 @@ class PostFirestore constructor()  {
             }
         }
     }
-    fun deletePost(postId: String, onSuccess: () -> Unit, onFailure: (Exception) -> Unit) {
-        firebaseModel.deletePost(postId, onSuccess, onFailure)
+    fun deletePost(post: Post, callback: () -> Unit) {
+        firebaseModel.deletePost(post) {
+            callback()
+        }
     }
-    fun updatePost(post: Post, onSuccess: () -> Unit, onFailure: (Exception) -> Unit) {
-        val postDocRef = postsCollection.document(post.postId)
-        postDocRef.set(post, SetOptions.merge())
-            .addOnSuccessListener {
-                onSuccess()
-            }
-            .addOnFailureListener { exception ->
-                onFailure(exception)
-            }
+    fun updatePost(post: Post, callback: () -> Unit){
+        firebaseModel.updatePost(post){
+            callback()
+        }
     }
 //
     fun getPostData(postId: String, onSuccess: (Post) -> Unit, onFailure: (Exception) -> Unit) {
-        // Step 1: Check if the post data is available in the local database
-        val localPost = database.PostDao().getPostById(postId)
-            // Step 2: Fetch the post data from Firebase
-            val postDocRef = postsCollection.document(postId)
-            postDocRef.get()
-                .addOnSuccessListener { documentSnapshot ->
-                    if (documentSnapshot.exists()) {
-                        val postData = documentSnapshot.toObject(Post::class.java)
-                        postData?.let {
-                            // Step 3: Insert the fetched post data into the local database
-                            executor.execute {
-                                database.PostDao().insert(it)
-                                mainHandler.post {
-                                    onSuccess(it)
-                                }
-                            }
-                        } ?: onFailure(Exception("Post data not found"))
-                    } else {
-                        onFailure(Exception("Post data not found"))
-                    }
-                }
-                .addOnFailureListener { exception ->
-                    onFailure(exception)
-                }
-    }
+        firebaseModel.getPostData(postId, onSuccess, onFailure)
 
+    }
 
     fun getPostById(postId: String, onSuccess: (Post) -> Unit, onFailure: (Exception) -> Unit) {
         firebaseModel.getPostById(postId, onSuccess, onFailure)
     }
+
     fun addPost(post: Post, callback: () -> Unit){
         firebaseModel.addPost(post, callback)
 
     }
-
 
 }

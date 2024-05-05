@@ -69,7 +69,11 @@
     <fragment
         android:id="@+id/editPostFragment"
         android:name="com.example.androidapp2024.Modules.Posts.EditPostFragment"
-        android:label="EditPostFragment" />
+        android:label="EditPostFragment" >
+        <argument
+            android:name="postId"
+            app:argType="string" />
+    </fragment>
     <action android:id="@+id/action_global_editPostFragment" app:destination="@id/editPostFragment" />
     <action android:id="@+id/action_global_firstFragment" app:destination="@id/firstFragment" />
     <fragment

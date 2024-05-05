@@ -16,6 +16,7 @@ data class Post(
     var payForShipping: Boolean,
     var fromLocation: String,
     var toLocation: String,
+    var isDeleted: Boolean = false,
     var itemDescription: String,
     val author: String, // You might want to add an author field
     val userId: String,
@@ -25,7 +26,7 @@ data class Post(
   //  constructor() : this()
 
         constructor() : this(
-        "", "", "", "", false, "", "", "", "", "", 0L, 0L // Initialize lastUpdated to 0L
+        "", "", "", "", false, "", "", false,"", "", "", 0L, 0L // Initialize lastUpdated to 0L
     )
     companion object {
         var lastUpdated: Long
@@ -52,6 +53,8 @@ data class Post(
         const val DATE_POSTED = "datePosted"
         const val POST_AUTHOR = "author"
         const val USER_ID = "userId"
+        const val IS_DELETED_KEY = "is_deleted"
+
 
         fun fromJSON(json: Map<String, Any>): Post {
             val itemName = json[ITEM_NAME] as? String ?: ""
@@ -65,6 +68,7 @@ data class Post(
             val from = json[FROM_LOCATION] as? String ?: ""
             val to = json[TO_LOCATION] as? String ?: ""
             val userName = json[POST_AUTHOR] as? String ?: ""
+            val isDeleted = json[IS_DELETED_KEY] as? Boolean ?: false
 
             val post = Post(
                 itemName = itemName,
@@ -78,6 +82,7 @@ data class Post(
                 fromLocation = from,
                 toLocation = to,
                 author = userName
+
             )
 
             val timestamp = json[LAST_UPDATED] as? com.google.firebase.Timestamp
@@ -96,14 +101,38 @@ data class Post(
                 TO_LOCATION to toLocation,
                 DATE_POSTED to datePosted,
                 ITEM_WEIGHT to itemWeight,
-                PAYING_OR_NOT to payForShipping,
                 IMAGE_URL to itemImageUri,
                 ITEM_DESCRIPTION to itemDescription,
                 PAYING_OR_NOT to payForShipping,
                 POST_ID to postId,
+                IS_DELETED_KEY to isDeleted,
                 LAST_UPDATED to FieldValue.serverTimestamp()
             )
         }
+    val deleteJson: Map<String, Any>
+        get() {
+            return hashMapOf(
+                IS_DELETED_KEY to true,
+                LAST_UPDATED to FieldValue.serverTimestamp(),
+            )
+        }
+
+    val updateJson: Map<String, Any>
+        get() {
+            return hashMapOf(
+                ITEM_NAME to itemName,
+                USER_ID to userId,
+                FROM_LOCATION to fromLocation,
+                TO_LOCATION to toLocation,
+                DATE_POSTED to datePosted,
+                ITEM_WEIGHT to itemWeight,
+                IMAGE_URL to itemImageUri,
+                ITEM_DESCRIPTION to itemDescription,
+                PAYING_OR_NOT to payForShipping,
+                LAST_UPDATED to FieldValue.serverTimestamp(),
+            )
+        }
+
 }
 //package com.example.androidapp2024.Model.PostModel
 //

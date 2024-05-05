@@ -48,7 +48,17 @@ class PostsRcyclerViewActivity : AppCompatActivity() {
             }
 
             override fun onDeletePostClicked(post: Post?) {
-                showDeleteConfirmationDialog(post)
+                post?.let { postToDelete ->
+                    Log.i("TAG","onDeletePostClicked ${post}")
+                    adapter?.removePost(postToDelete.postId)
+                }
+            }
+            override fun onPostDeleted(post: Post) {
+                PostFirestore.getInstance().deletePost(post) {
+                    // Post deleted successfully
+                    Log.i("TAG","onPostDeleted ${post}")
+                    adapter?.removePost(post.postId)
+                }
             }
 
         }
@@ -60,6 +70,9 @@ class PostsRcyclerViewActivity : AppCompatActivity() {
         fun OnItemClick(position: Int)//user
         fun onPostClicked(post: Post?)
         fun onDeletePostClicked(post: Post?)
+        fun onPostDeleted(post: Post)
+
+
     }
 
 
@@ -90,25 +103,24 @@ class PostsRcyclerViewActivity : AppCompatActivity() {
     }
     private fun deletePost(post: Post?) {
         post?.let { postToDelete ->
-            PostFirestore.getInstance().deletePost(postToDelete.postId,
-                onSuccess = {
-                    // Post deleted successfully
-                    // Refresh the posts list
-                    PostFirestore.getInstance().getAllPosts { posts ->
-                        this.posts = posts
-                        adapter?.posts = posts
-                        adapter?.notifyDataSetChanged()
-                    }
-                },
-                onFailure = { exception ->
-                    // Handle the failure case
-                    Log.e("PostsRcyclerViewActivity", "Failed to delete post: ${exception.message}")
+            PostFirestore.getInstance().deletePost(postToDelete) {
+
+                // Post deleted successfully
+                // Refresh the posts list
+                PostFirestore.getInstance().getAllPosts { posts ->
+                    this.posts = posts
+                    adapter?.posts = posts
+                    adapter?.notifyDataSetChanged()
                 }
-            )
+//                },
+//                onFailure = { exception ->
+//                    // Handle the failure case
+//                    Log.e("PostsRcyclerViewActivity", "Failed to delete post: ${exception.message}")
+//                }
+                //)
+            }
         }
     }
-
-
 }
 //package com.example.androidapp2024.Modules.Posts
 //

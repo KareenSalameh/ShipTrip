@@ -1,6 +1,7 @@
 package com.example.androidapp2024.Modules.Posts
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -56,28 +57,30 @@ class EditPostFragment : Fragment() {
         }
         saveButton = view.findViewById(R.id.btnSavePost)
         saveButton.setOnClickListener {
-            saveChanges()
+            postId?.let { postId ->
+                saveChanges(postId) // Pass the postId to saveChanges function
+            }
         }
+
         return view
     }
 
     private fun loadPostData() {
         if (postId != null) {
-            FirebaseFirestore.getInstance().collection(PostFirebaseModel.POSTS_COLLECTION_PATH)
-                .document(postId!!)
-                .get()
-                .addOnSuccessListener { documentSnapshot ->
-                    val retrievedPost = documentSnapshot.toObject(Post::class.java)
-                    retrievedPost?.let {
-                        post = it // Update the post variable with the retrieved post data
-                        populatePostData(post) // Populate UI fields with post data
-                    }
+            PostFirestore.getInstance().getPostData(
+                postId!!,
+                onSuccess = { post ->
+                    this.post = post // Update the post variable with the retrieved post data
+                    populatePostData(post) // Populate UI fields with post data
+                },
+                onFailure = { exception ->
+                    // Handle failure case, such as displaying an error message
+                    Log.e("LoadPostData", "Error loading post data: ${exception.message}")
                 }
-                .addOnFailureListener { exception ->
-                    // Handle the failure case
-                }
+            )
         }
     }
+
 
     private fun initViews(view: View) {
         itemImageView = view.findViewById(R.id.ivPostImage)
@@ -93,25 +96,6 @@ class EditPostFragment : Fragment() {
         }
     }
 
-//    private fun loadPostData() {
-//        if (postId != null) {
-//            FirebaseFirestore.getInstance().collection(PostFirebaseModel.POSTS_COLLECTION_PATH)
-//                .document(postId!!)
-//                .get()
-//                .addOnSuccessListener { documentSnapshot ->
-//                    val retrievedPost = documentSnapshot.toObject(Post::class.java)
-//                    retrievedPost?.let {
-//                        // Populate the post variable with the retrieved post data
-//                        post = it
-//                        // Populate the UI fields with the retrieved post data
-//                        populatePostData(post)
-//                    }
-//                }
-//                .addOnFailureListener { exception ->
-//                    // Handle the failure case
-//                }
-//        }
-//    }
 
     private fun populatePostData(post: Post) {
         if (!post.itemImageUri.isNullOrEmpty()) {
@@ -129,8 +113,9 @@ class EditPostFragment : Fragment() {
     private fun cancelEdit() {
         findNavController().popBackStack()
     }
-    private fun saveChanges() {
-        PostFirestore.getInstance().getPostData(post.postId, { postData ->
+    private fun saveChanges(postId: String) {
+        // Call getPostData with the postId
+        PostFirestore.getInstance().getPostData(postId, { postData ->
             val updatedPost = Post(
                 postId = postData.postId,
                 itemName = itemNameEditText.text.toString().takeIf { it.isNotBlank() } ?: postData.itemName,
@@ -146,12 +131,10 @@ class EditPostFragment : Fragment() {
                 lastUpdated = postData.lastUpdated
             )
 
-            PostFirestore.getInstance().updatePost(updatedPost, onSuccess = {
+            PostFirestore.getInstance().updatePost(updatedPost){
                 Toast.makeText(requireContext(), "Profile updated successfully", Toast.LENGTH_SHORT).show()
                 findNavController().popBackStack()
-            }, onFailure = { exception ->
-                Toast.makeText(requireContext(), "Failed to update profile: ${exception.message}", Toast.LENGTH_SHORT).show()
-            })
+            }
         }, { exception ->
             Toast.makeText(requireContext(), "Failed to retrieve user data: ${exception.message}", Toast.LENGTH_SHORT).show()
         })
@@ -174,16 +157,14 @@ class EditPostFragment : Fragment() {
         post.itemDescription = itemDescription
 
         // Update the post in Firestore
-        PostFirestore.getInstance().updatePost(post,
-            onSuccess = {
+        PostFirestore.getInstance().updatePost(post){
                 // Navigate back to the previous fragment or show a success message
                 findNavController().popBackStack()
-            },
-            onFailure = { exception ->
-                // Handle the failure case
-                Toast.makeText(requireContext(), "Failed to update post: ${exception.message}", Toast.LENGTH_SHORT).show()
             }
-        )
+           //     Toast.makeText(requireContext(), "Failed to update post: ${exception.message}", Toast.LENGTH_SHORT).show()
+            //}
+     //   )
+
     }
 
 

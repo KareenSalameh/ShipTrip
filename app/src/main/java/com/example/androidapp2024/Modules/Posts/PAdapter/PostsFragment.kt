@@ -58,6 +58,10 @@ class PostsFragment : Fragment() {
             override fun onDeletePostClicked(post: Post?) {
                 Log.i("TAG", "delete $post")
             }
+
+            override fun onPostDeleted(post: Post) {
+                TODO("Not yet implemented")
+            }
         }
 
         postsRecyclerView?.adapter = adapter

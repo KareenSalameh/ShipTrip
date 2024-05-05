@@ -13,6 +13,7 @@ import com.example.androidapp2024.Model.PostModel.Post
 import com.example.androidapp2024.Modules.Posts.PostsRcyclerViewActivity
 import com.example.androidapp2024.R
 import androidx.navigation.fragment.findNavController
+import com.example.androidapp2024.Model.PostModel.PostFirestore
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
@@ -37,6 +38,7 @@ class PostViewHolder(
     private var floatingActionButton: FloatingActionButton? = null
     private var ClickToShipTextView : TextView?= null
 
+    var adapter: PostsRecyclerAdapter?= null
 
     init {
         itemNameTextView = itemView.findViewById(R.id.ItemName)
@@ -72,23 +74,39 @@ class PostViewHolder(
             deletePostImageView?.visibility = View.GONE
         }
         editPostImageView?.setOnClickListener {
-          //  navigateToEditPost()
             findNavController(itemView).navigate(R.id.action_global_editPostFragment)
 
         }
+
         floatingActionButton?.setOnClickListener {
             val bundle = Bundle().apply {
-                putString("post", post?.postId)
+                putString("postId", post?.postId)
             }
             findNavController(itemView).navigate(R.id.action_postsFragment_to_firstFragment, bundle)
         }
 
         deletePostImageView?.setOnClickListener {
-            listener?.onDeletePostClicked(post)
-        }
-    }
-    private fun navigateToEditPost() {
+//            val postToDelete = post
+//            if (postToDelete != null) {
+//                Log.i("TAG", "post moved to delete ${postToDelete}")
+//                listener?.onPostDeleted(postToDelete)
+//            }
+            val postToDelete = post
+            if (postToDelete != null) {
+                Log.i("Delete","Post to delete ${postToDelete}")
+                PostFirestore.getInstance().deletePost(postToDelete) {
+                    // Post deleted successfully
+                    // Remove the post from the local list
+                    posts = posts?.filter { it.postId != postToDelete.postId }
+                    // Notify the adapter about the data change
+                    this.posts= posts
+                    adapter?.posts = posts
+                    adapter?.notifyDataSetChanged()
+                    Log.i("Delete","Post to delete222 ${postToDelete}")
 
+                }
+            }
+        }
     }
 
     private fun updatePayOrNotText(isChecked: Boolean) {

@@ -23,9 +23,12 @@ class PostsRecyclerAdapter(var posts: List<Post>?, private val isMyPostsFragment
         viewHolder.listener = listener // Set the listener here
         return viewHolder
     }
-    fun updatePosts(posts: List<Post>) {
-        this.posts = posts
-        notifyDataSetChanged()
+    fun removePost(postId: String) {
+        val position = posts?.indexOfFirst { it.postId == postId }
+        if (position != null && position != -1) {
+            posts = posts?.filter { it.postId != postId }
+            notifyItemRemoved(position)
+        }
     }
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
         val post = posts?.get(position)

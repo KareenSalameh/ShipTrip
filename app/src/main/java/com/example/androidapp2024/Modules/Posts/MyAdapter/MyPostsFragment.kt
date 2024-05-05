@@ -50,6 +50,10 @@ class MyPostsFragment : Fragment() {
                 TODO("Not yet implemented")
             }
 
+            override fun onPostDeleted(post: Post) {
+                TODO("Not yet implemented")
+            }
+
         }
 
     }
