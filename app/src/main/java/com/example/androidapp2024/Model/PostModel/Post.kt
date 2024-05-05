@@ -21,12 +21,12 @@ data class Post(
     val author: String, // You might want to add an author field
     val userId: String,
     val datePosted: Long = System.currentTimeMillis(),
-    var lastUpdated: Long? = null
+  //  var lastUpdated: Long? = null
 ) {
   //  constructor() : this()
 
         constructor() : this(
-        "", "", "", "", false, "", "", false,"", "", "", 0L, 0L // Initialize lastUpdated to 0L
+        "", "", "", "", false, "", "", false,"", "", "", 0L, // Initialize lastUpdated to 0L
     )
     companion object {
         var lastUpdated: Long
@@ -86,7 +86,7 @@ data class Post(
             )
 
             val timestamp = json[LAST_UPDATED] as? com.google.firebase.Timestamp
-            post.lastUpdated = timestamp?.toDate()?.time ?: 0L
+       //     post.lastUpdated = timestamp?.toDate()?.time ?: 0L
 
             return post
         }

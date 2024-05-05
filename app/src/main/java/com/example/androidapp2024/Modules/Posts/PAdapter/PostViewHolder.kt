@@ -1,5 +1,6 @@
 package com.example.androidapp2024.Modules.Posts.PAdapter
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -46,16 +47,15 @@ class PostViewHolder(
         fromLocationTextView = itemView.findViewById(R.id.tvfromLocation)
         toLocationTextView = itemView.findViewById(R.id.tvtoLocation)
         itemDescriptionTextView = itemView.findViewById(R.id.DescriptionItemText)
-        //  payForShippingSwitch = itemView.findViewById(R.id.pa)
-        //  payForShippingCheckBox = itemView.findViewById(R.id.checkBox)
+        payForShippingCheckBox = itemView.findViewById<CheckBox>(R.id.checkBox)
         payOrNotText = itemView.findViewById(R.id.PayOrNotText)
         floatingActionButton = itemView.findViewById(R.id.floatingActionButton5)
         editPostImageView = itemView.findViewById(R.id.iconEdit)
         deletePostImageView = itemView.findViewById(R.id.icondelete)
         ClickToShipTextView = itemView.findViewById(R.id.tvClickToShip)
         itemImageView = itemView.findViewById(R.id.UploadPhoto)
-        payForShippingCheckBox?.setOnCheckedChangeListener { buttonView, isChecked ->
-            updatePayOrNotText(isChecked)
+        payForShippingCheckBox?.setOnCheckedChangeListener { _,isChecked ->
+            payOrNotText?.text = if (isChecked) "Yes" else "No"
         }
         itemView.setOnClickListener {
             Log.i("TAG", "PostViewHolder:Position clicked $adapterPosition")
@@ -73,10 +73,16 @@ class PostViewHolder(
             editPostImageView?.visibility = View.GONE
             deletePostImageView?.visibility = View.GONE
         }
+//        editPostImageView?.setOnClickListener {
+//            findNavController(itemView).navigate(R.id.action_global_editPostFragment)
+//        }
         editPostImageView?.setOnClickListener {
-            findNavController(itemView).navigate(R.id.action_global_editPostFragment)
-
+            post?.postId?.let { postId ->
+                val action = PostsFragmentDirections.actionGlobalEditPostFragment(postId)
+                findNavController(itemView).navigate(action)
+            }
         }
+
 
         floatingActionButton?.setOnClickListener {
             val bundle = Bundle().apply {
@@ -86,28 +92,55 @@ class PostViewHolder(
         }
 
         deletePostImageView?.setOnClickListener {
-//            val postToDelete = post
-//            if (postToDelete != null) {
-//                Log.i("TAG", "post moved to delete ${postToDelete}")
-//                listener?.onPostDeleted(postToDelete)
-//            }
-            val postToDelete = post
-            if (postToDelete != null) {
-                Log.i("Delete","Post to delete ${postToDelete}")
+            DeleteOnClick()
+
+        }
+    }
+    private fun DeleteOnClick() {
+        val postToDelete = post
+        if (postToDelete != null) {
+            val alertDialogBuilder = AlertDialog.Builder(itemView.context)
+            alertDialogBuilder.setTitle("Confirm Deletion")
+            alertDialogBuilder.setMessage("Are you sure you want to delete this post?")
+            alertDialogBuilder.setPositiveButton("Yes") { _, _ ->
+                // User confirmed deletion
+                Log.i("Delete", "Post to delete ${postToDelete}")
                 PostFirestore.getInstance().deletePost(postToDelete) {
                     // Post deleted successfully
                     // Remove the post from the local list
                     posts = posts?.filter { it.postId != postToDelete.postId }
                     // Notify the adapter about the data change
-                    this.posts= posts
+                    this.posts = posts
                     adapter?.posts = posts
                     adapter?.notifyDataSetChanged()
-                    Log.i("Delete","Post to delete222 ${postToDelete}")
-
                 }
             }
+            alertDialogBuilder.setNegativeButton("No") { dialog, _ ->
+                // User canceled deletion, do nothing
+                dialog.dismiss()
+            }
+            val alertDialog = alertDialogBuilder.create()
+            alertDialog.show()
         }
     }
+
+//    private fun DeleteOnClick(){
+//        val postToDelete = post
+//        if (postToDelete != null) {
+//            Log.i("Delete","Post to delete ${postToDelete}")
+//            PostFirestore.getInstance().deletePost(postToDelete) {
+//                // Post deleted successfully
+//                // Remove the post from the local list
+//                posts = posts?.filter { it.postId != postToDelete.postId }
+//                // Notify the adapter about the data change
+//                this.posts= posts
+//                adapter?.posts = posts
+//                adapter?.notifyDataSetChanged()
+//                Log.i("Delete","Post to delete222 ${postToDelete}")
+//
+//            }
+//        }
+//    }
 
     private fun updatePayOrNotText(isChecked: Boolean) {
         payOrNotText?.setText(if (isChecked) "Yes" else "No")

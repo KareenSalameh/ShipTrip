@@ -39,8 +39,12 @@ class EditPostFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         firebaseModel = PostFirebaseModel()
-        postId = arguments?.getString("postId")
+        arguments?.let {
+            postId = it.getString("postId")
+            Log.i("Tag","Recieved the ID $postId")
+        }
     }
+
     fun setPostToEdit(post: Post) {
         var postToEdit = post
     }
@@ -58,6 +62,7 @@ class EditPostFragment : Fragment() {
         saveButton = view.findViewById(R.id.btnSavePost)
         saveButton.setOnClickListener {
             postId?.let { postId ->
+                Log.i("Tag","postId: ${postId}")
                 saveChanges(postId) // Pass the postId to saveChanges function
             }
         }
@@ -72,6 +77,8 @@ class EditPostFragment : Fragment() {
                 onSuccess = { post ->
                     this.post = post // Update the post variable with the retrieved post data
                     populatePostData(post) // Populate UI fields with post data
+                    Log.e("Tag", " loading post data: ${post}")
+
                 },
                 onFailure = { exception ->
                     // Handle failure case, such as displaying an error message
@@ -128,7 +135,7 @@ class EditPostFragment : Fragment() {
                 author = postData.author,
                 userId = postData.userId,
                 datePosted = postData.datePosted,
-                lastUpdated = postData.lastUpdated
+               // lastUpdated = postData.lastUpdated
             )
 
             PostFirestore.getInstance().updatePost(updatedPost){
