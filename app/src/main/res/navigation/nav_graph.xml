@@ -11,7 +11,7 @@
         android:label="First Fragment"
         tools:layout="@layout/fragment_first">
         <argument
-            android:name="TITLE"
+            android:name="postId"
             app:argType="string" />
     </fragment>
        <fragment
@@ -19,9 +19,10 @@
         android:name="com.example.androidapp2024.Modules.Posts.PAdapter.PostsFragment"
         android:label="Posts list Fragment"
         tools:layout="@layout/fragment_posts" >
-        <action
-            android:id="@+id/action_postsFragment_to_firstFragment"
-            app:destination="@id/firstFragment" />
+           <action
+               android:id="@+id/action_postsFragment_to_firstFragment"
+               app:destination="@id/firstFragment"/>
+
         <action
             android:id="@+id/action_postsFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
@@ -81,5 +82,9 @@
         android:name="com.example.androidapp2024.mapFragment"
         android:label="fragment_map"
         tools:layout="@layout/fragment_map" /><action android:id="@+id/action_global_mapFragment2" app:destination="@id/mapFragment2"/>
+    <fragment
+        android:id="@+id/forgotPasswordFragment"
+        android:name="com.example.androidapp2024.Modules.Login.ForgotPasswordFragment"
+        android:label="ForgotPasswordFragment" /><action android:id="@+id/action_global_forgotPasswordFragment" app:destination="@id/forgotPasswordFragment"/>
 
 </navigation>

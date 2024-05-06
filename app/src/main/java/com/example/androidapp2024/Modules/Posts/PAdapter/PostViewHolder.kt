@@ -77,23 +77,29 @@ class PostViewHolder(
 //            findNavController(itemView).navigate(R.id.action_global_editPostFragment)
 //        }
         editPostImageView?.setOnClickListener {
-            post?.postId?.let { postId ->
-                val action = PostsFragmentDirections.actionGlobalEditPostFragment(postId)
-                findNavController(itemView).navigate(action)
-            }
+            navigateToEdit()
         }
 
 
         floatingActionButton?.setOnClickListener {
-            val bundle = Bundle().apply {
-                putString("postId", post?.postId)
-            }
-            findNavController(itemView).navigate(R.id.action_postsFragment_to_firstFragment, bundle)
+            navigateToUserData()
         }
 
         deletePostImageView?.setOnClickListener {
             DeleteOnClick()
 
+        }
+    }
+    private fun navigateToUserData(){
+        post?.postId?.let { postId ->
+            val action = PostsFragmentDirections.actionPostsFragmentToFirstFragment(postId)
+            findNavController(itemView).navigate(action)
+        }
+    }
+    private fun navigateToEdit(){
+        post?.postId?.let { postId ->
+            val action = PostsFragmentDirections.actionGlobalEditPostFragment(postId)
+            findNavController(itemView).navigate(action)
         }
     }
     private fun DeleteOnClick() {
@@ -162,5 +168,6 @@ class PostViewHolder(
         } else {
             itemImageView?.setImageResource(R.drawable.ship)
         }
+
     }
 }

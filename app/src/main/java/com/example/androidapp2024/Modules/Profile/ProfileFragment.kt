@@ -28,7 +28,7 @@ class ProfileFragment : Fragment() {
     private lateinit var btnMyPosts: Button
     private lateinit var btnLogout: Button
     private val auth = FirebaseAuth.getInstance()
-    private val userFirebaseModel = UserFirebaseModel()
+  //  private val userFirebaseModel = UserFirebaseModel()
     private val userFirestore = UserFirestore.getInstance()
 
     private var itemImageView: ImageView? = null

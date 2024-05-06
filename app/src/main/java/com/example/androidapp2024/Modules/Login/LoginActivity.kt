@@ -10,19 +10,21 @@ import android.widget.TextView
 import com.google.firebase.auth.FirebaseAuth
 import android.widget.Toast
 import com.example.androidapp2024.Modules.Feed.FeedActivity
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
-import com.google.firebase.auth.FirebaseAuthInvalidUserException
-import com.example.androidapp2024.Model.UserModel.UserFirebaseModel
 import com.example.androidapp2024.R
 import com.example.androidapp2024.Modules.Register.RegisterActivity
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
+import android.content.SharedPreferences
+
 
 class LoginActivity : AppCompatActivity() {
     private var auth = Firebase.auth
     private lateinit var emailEditText: EditText
     private lateinit var passwordEditText: EditText
     private lateinit var loginButton: Button
+    private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var textViewRegister: TextView
+    private lateinit var textViewForgotPass: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,14 +33,21 @@ class LoginActivity : AppCompatActivity() {
         emailEditText = findViewById(R.id.editTextEmail)
         passwordEditText = findViewById(R.id.editTextPassword)
         loginButton = findViewById(R.id.Loginbtn2)
+        textViewRegister= findViewById(R.id.textViewRegister)
+        textViewForgotPass= findViewById(R.id.textViewForgotPass)
 
-        // Set click listener for login button
         loginButton.setOnClickListener {
             logInUser()
         }
-//        if (auth.currentUser != null) {
-//            HandleLogIn()
-//        }
+        textViewRegister.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+        }
+        textViewForgotPass.setOnClickListener {
+            val intent = Intent(this, ForgotPasswordActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 
     private fun logInUser() {
@@ -74,6 +83,7 @@ class LoginActivity : AppCompatActivity() {
                     ).show()
                 }
             }
+
     }
 
     private fun isValidEmail(email: String): Boolean {

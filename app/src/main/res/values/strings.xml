@@ -19,4 +19,6 @@
     <string name="paying">Paying?</string>
     <string name="complete">ShipIt</string>
     <string name="post_image_description">Post Image</string>
+    <string name="postId">postId</string>
+
 </resources>
