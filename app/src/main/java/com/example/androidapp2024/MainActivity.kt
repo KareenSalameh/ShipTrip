@@ -36,6 +36,9 @@ class MainActivity : AppCompatActivity() {
     }
 }
 
-
-
+//
+//##delete the post that crashes when userdatafetch because unfound detials
+// change first fragmnt name and xml
+// change location type
+// complete mapping
 

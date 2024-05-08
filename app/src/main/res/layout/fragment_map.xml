@@ -1,21 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mapFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchView"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:queryHint="Search for a location" />
+
+    <Button
+        android:id="@+id/searchButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="310dp"
+        android:layout_marginTop="-54dp"
+        android:text="Search" />
+
+<!--        <EditText-->
+<!--            android:id="@+id/source_location"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:hint="Source Location"-->
+<!--            android:inputType="textPersonName" />-->
+
+<!--        <EditText-->
+<!--            android:id="@+id/destination_location"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:hint="Destination Location"-->
+<!--            android:inputType="textPersonName" />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/search_button"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Search" />-->
 
 
-<androidx.fragment.app.FragmentContainerView
+
+
+    <fragment
         android:id="@+id/mapFragment"
-        class="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="413dp"
-        android:layout_height="655dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="634dp"
+        android:layout_weight="1" />
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

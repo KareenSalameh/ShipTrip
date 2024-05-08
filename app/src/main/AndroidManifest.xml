@@ -4,6 +4,8 @@
     package="com.example.androidapp2024">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <application
         android:name=".base.MyApplication"
@@ -20,7 +22,7 @@
             android:name=".Modules.Login.ForgotPasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".MapActivity"
+            android:name=".Map.MapActivity"
             android:exported="true" />
 
         <meta-data

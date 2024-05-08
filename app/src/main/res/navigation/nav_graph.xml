@@ -79,7 +79,7 @@
     <action android:id="@+id/action_global_firstFragment" app:destination="@id/firstFragment" />
     <fragment
         android:id="@+id/mapFragment2"
-        android:name="com.example.androidapp2024.mapFragment"
+        android:name="com.example.androidapp2024.Map.mapFragment"
         android:label="fragment_map"
         tools:layout="@layout/fragment_map" /><action android:id="@+id/action_global_mapFragment2" app:destination="@id/mapFragment2"/>
     <fragment
