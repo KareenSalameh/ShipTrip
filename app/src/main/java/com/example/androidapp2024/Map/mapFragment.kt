@@ -25,7 +25,6 @@ class mapFragment : Fragment() {
     private var googleMap: GoogleMap? = null // Declare googleMap as a class-level variable
 
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,52 +40,19 @@ class mapFragment : Fragment() {
         val mapFragment =
             childFragmentManager.findFragmentById(R.id.mapFragment) as SupportMapFragment?
         mapFragment?.getMapAsync { map ->
-            googleMap = map // Assign the map to the class-level variable
-
-            setUpSearch()
+            googleMap = map
 
             getLastLocation()
 
-            // Set the initial camera position to Israel
-            val israel = LatLng(31.0461, 34.8516) // Replace with the desired coordinates
+            val israel = LatLng(31.0461, 34.8516)
             googleMap?.addMarker(MarkerOptions().position(israel).title("Israel"))
             googleMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(israel, 6f)) // Adjust the zoom level as needed
 
-            // Enable other map features as needed
             googleMap?.uiSettings?.isZoomControlsEnabled = true
             googleMap?.uiSettings?.isMyLocationButtonEnabled = true
 
         }
     }
-    private fun setUpSearch(){
-        val searchView = view?.findViewById<SearchView>(R.id.searchView)
-        searchView?.isFocusable = true
-
-        searchView?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                // Perform search operations based on the query
-                performSearch(query)
-                return true
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                // Perform search operations as the text changes
-                return true
-            }
-        })
-    }
-
-    private fun performSearch(query: String?) {
-        // Implement your search logic here
-        if (!query.isNullOrBlank()) {
-            // Perform search operations based on the query
-            // For example, you might want to search for the location on the map
-            // Here, I'm just logging the search query to the console
-            println("Search query: $query")
-        }
-    }
-
-
 
     private fun getLastLocation() {
         if (ActivityCompat.checkSelfPermission(
@@ -109,10 +75,8 @@ class mapFragment : Fragment() {
                 if (location != null) {
                     currentLocation = location
                     val currentLatLng = LatLng(location.latitude, location.longitude)
-                    // Now you have the current location, you can do whatever you want with it.
-                    // For example, move the camera to the current location:
+
                     googleMap?.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 12f))
-                    // Add a marker at the current location:
                     googleMap?.addMarker(MarkerOptions().position(currentLatLng).title("Your Location"))
                 }
             }
