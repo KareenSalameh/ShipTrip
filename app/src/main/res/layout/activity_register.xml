@@ -77,7 +77,6 @@
         android:background="@drawable/edittext_background"
         android:fontFamily="@font/arvoregular"
         android:hint="Location"
-        android:inputType="textPassword"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.527"

@@ -9,7 +9,7 @@ import com.example.androidapp2024.base.MyApplication
 import com.example.greenapp.database.local.PostDao
 import java.lang.IllegalStateException
 
-@Database(entities = [User::class, Post::class], version = 15 )
+@Database(entities = [User::class, Post::class], version = 16 )
 abstract class AppLocalDbRepository: RoomDatabase(){
     abstract fun userDao(): UserDao
     abstract fun PostDao(): PostDao

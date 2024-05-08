@@ -14,31 +14,30 @@ data class User(
     val name: String,
     val userImgUrl: String,
     val email: String,
-    val location:String,
-    var lastUpdated: Long ?= null) {
-    constructor() : this("", "null", "", "null@gmail.com", "", null)
+    val location:String) {
+    constructor() : this("", "null", "", "null@gmail.com", "")
 
     companion object{
-        var lastUpdated: Long
-            get(){
-                return MyApplication.Globals
-                    .appContext?.getSharedPreferences("TAG",Context.MODE_PRIVATE)
-                    ?.getLong(GET_LAST_UPDATED,0) ?: 0
-            }
-            set(value){
-                MyApplication.Globals
-                    ?.appContext
-                    ?.getSharedPreferences("TAG",Context.MODE_PRIVATE)?.edit()
-                    ?.putLong(GET_LAST_UPDATED,value)?.apply()
-
-            }
+//        var lastUpdated: Long
+//            get(){
+//                return MyApplication.Globals
+//                    .appContext?.getSharedPreferences("TAG",Context.MODE_PRIVATE)
+//                    ?.getLong(GET_LAST_UPDATED,0) ?: 0
+//            }
+//            set(value){
+//                MyApplication.Globals
+//                    ?.appContext
+//                    ?.getSharedPreferences("TAG",Context.MODE_PRIVATE)?.edit()
+//                    ?.putLong(GET_LAST_UPDATED,value)?.apply()
+//
+//            }
         const val ID_KEY = "userId"
         const val NAME_KEY = "name"
         const val USER_URL_KEY = "userImgUrl"
         const val EMAIL_KEY = "email"
         const val LOCATION_KEY = "location"
         const val LAST_UPDATED = "lastUpdated"
-        const val GET_LAST_UPDATED = "get_last_updated"
+       // const val GET_LAST_UPDATED = "get_last_updated"
         const val IMG_KEY = "userImgUrl"
 
         fun fromJSON(json: Map<String,Any>): User {
@@ -50,10 +49,10 @@ data class User(
             val location = json[LOCATION_KEY] as? String?: ""
             val u =  User(userId, name,userImgUrl, email, location)
 
-            val timestamp: Timestamp?= json[LAST_UPDATED] as? Timestamp
-            timestamp?.let{
-                u.lastUpdated = it.seconds
-            }
+//            val timestamp: Timestamp?= json[LAST_UPDATED] as? Timestamp
+//            timestamp?.let{
+//                u.lastUpdated = it.seconds
+//            }
             return u
         }
     }
@@ -67,7 +66,7 @@ data class User(
                 USER_URL_KEY to userImgUrl,
                 EMAIL_KEY to email,
                 LOCATION_KEY to location,
-                LAST_UPDATED to FieldValue.serverTimestamp()
+               // LAST_UPDATED to FieldValue.serverTimestamp()
             )
         }
     val updateJson: Map<String, Any>
@@ -79,7 +78,7 @@ data class User(
                 USER_URL_KEY to userImgUrl,
                 EMAIL_KEY to email,
                 LOCATION_KEY to location,
-                LAST_UPDATED to FieldValue.serverTimestamp()
+               // LAST_UPDATED to FieldValue.serverTimestamp()
             )
         }
 }

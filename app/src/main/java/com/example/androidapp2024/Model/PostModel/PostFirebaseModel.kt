@@ -15,15 +15,15 @@ import com.google.firebase.storage.storage
 class PostFirebaseModel {
     private val db = com.google.firebase.Firebase.firestore
     private val storage = com.google.firebase.Firebase.storage
+
+//    init {
+//        val settings = firestoreSettings {
+//            setLocalCacheSettings(memoryCacheSettings {  })
+//        }
+//        db.firestoreSettings = settings
+//    }
     companion object {
         const val POSTS_COLLECTION_PATH = "Posts"
-    }
-
-    init {
-        val settings = firestoreSettings {
-            setLocalCacheSettings(memoryCacheSettings {  })
-        }
-        db.firestoreSettings = settings
     }
     fun getAllPosts(since: Long,callback: (List<Post>) -> Unit){
 
