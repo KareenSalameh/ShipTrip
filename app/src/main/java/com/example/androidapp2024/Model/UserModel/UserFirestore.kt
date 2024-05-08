@@ -1,3 +1,4 @@
+import com.example.androidapp2024.Model.PostModel.PostFirebaseModel
 import com.example.androidapp2024.Model.UserModel.User
 import com.example.androidapp2024.Model.UserModel.UserFirebaseModel
 import com.google.firebase.firestore.FirebaseFirestore
@@ -8,6 +9,7 @@ class UserFirestore private constructor() {
 
     private val db = FirebaseFirestore.getInstance()
     private val usersCollection = db.collection(UserFirebaseModel.USERS_COLLECTION_PATH)
+    private val firebaseModel = UserFirebaseModel()
 
     companion object {
         @Volatile
@@ -23,41 +25,14 @@ class UserFirestore private constructor() {
     }
 
     fun getUserData(userId: String, onSuccess: (User) -> Unit, onFailure: (Exception) -> Unit) {
-        val userDocRef = usersCollection.document(userId)
-        userDocRef.get()
-            .addOnSuccessListener { documentSnapshot ->
-                if (documentSnapshot.exists()) {
-//                    val userData = documentSnapshot.toObject(User::class.java)
-//                    onSuccess(userData!!)
-                    val userData = documentSnapshot.toObject(User::class.java)
-                    userData?.let { onSuccess(it) } ?: onFailure(Exception("User data not found"))
-                } else {
-                    onFailure(Exception("User data not found"))
-                }
-            }
-            .addOnFailureListener { exception ->
-                onFailure(exception)
-            }
+        firebaseModel.getUserData(userId,onSuccess,onFailure)
     }
 
+
     fun addUser(user: User, onSuccess: () -> Unit, onFailure: (Exception) -> Unit) {
-        val userDocRef = usersCollection.document(user.userId)
-        userDocRef.set(user, SetOptions.merge())
-            .addOnSuccessListener {
-                onSuccess()
-            }
-            .addOnFailureListener { exception ->
-                onFailure(exception)
-            }
+        firebaseModel.addUser(user,onSuccess,onFailure)
     }
     fun updateUser(user: User, onSuccess: () -> Unit, onFailure: (Exception) -> Unit) {
-        val userDocRef = usersCollection.document(user.userId)
-        userDocRef.set(user, SetOptions.merge())
-            .addOnSuccessListener {
-                onSuccess()
-            }
-            .addOnFailureListener { exception ->
-                onFailure(exception)
-            }
+        firebaseModel.updateUser(user,onSuccess,onFailure)
     }
 }

@@ -11,11 +11,9 @@ import com.bumptech.glide.Glide
 import com.example.androidapp2024.Model.PostModel.PostFirebaseModel
 import com.example.androidapp2024.Model.PostModel.PostFirestore
 import com.example.androidapp2024.Model.UserModel.User
-import com.example.androidapp2024.Model.UserModel.UserFirebaseModel
-import com.example.androidapp2024.R
 import de.hdodenhof.circleimageview.CircleImageView
 
-class FirstFragment : Fragment() {
+class UserDetailsFragment : Fragment() {
     private lateinit var profileImageView: CircleImageView
     private lateinit var tvName: TextView
     private lateinit var tvEmail: TextView
@@ -26,10 +24,7 @@ class FirstFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         firebaseModel = PostFirebaseModel()
-//        arguments?.let {
-//            postId = it.getString("postId")
-//            Log.i("Tag","Recieved the ID $postId")
-//        }
+
     }
 
     override fun onCreateView(
@@ -41,17 +36,12 @@ class FirstFragment : Fragment() {
         tvName = view.findViewById(R.id.tvNameOfUser3)
         tvEmail = view.findViewById(R.id.tvEmailOfUser3)
         val postId = arguments?.getString("postId")
-        //        arguments?.let {
-//            postId = it.getString("postId")
-//            Log.i("Tag","Recieved the ID $postId")
-//        }
+
         if (postId != null) {
             Log.i("Tag", "Before fetching data ${postId}")
             fetchPostData(postId)
             Log.i("Tag", "After fetching data ${postId}")
-
         }
-
         return view
     }
 
@@ -60,15 +50,12 @@ class FirstFragment : Fragment() {
             onSuccess = { post ->
                 fetchUserData(post.userId)
                 Log.i("TAG", "SUCCESS to fetch Post Data: ${post}")
-
             },
             onFailure = { exception ->
-                // Handle the failure case
                 Log.i("TAG", "Failing to fetch Post Data: ${exception.message}")
             }
         )
     }
-
     private fun fetchUserData(userId: String) {
         userFirestore.getUserData(userId,
             onSuccess = { user ->
@@ -81,13 +68,11 @@ class FirstFragment : Fragment() {
             }
         )
     }
-
     private fun displayUserData(user: User) {
         tvName.text = user.name
         tvEmail.text = user.email
 
-        // Load profile image using Glide or any other image loading library
-        // Example using Glide:
+        // Load profile image using Glide library
         Glide.with(requireContext())
             .load(user.userImgUrl)
             .placeholder(R.drawable.baseline_account_circle_24)

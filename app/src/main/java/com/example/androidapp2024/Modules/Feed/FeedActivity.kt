@@ -31,9 +31,6 @@ class FeedActivity : AppCompatActivity() {
             })
         }
 
-        //  supportActionBar?.title = "Hello"
-        // Initialize Firebase components
-
         val navHostFragment: NavHostFragment? =
             supportFragmentManager.findFragmentById(R.id.navHostMain) as? NavHostFragment
         navController = navHostFragment?.navController
@@ -72,7 +69,6 @@ class FeedActivity : AppCompatActivity() {
     }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         super.onCreateOptionsMenu(menu)
-        // menuInflater.inflate(R.menu.botoom_menu, menu)
         return true
     }
 }

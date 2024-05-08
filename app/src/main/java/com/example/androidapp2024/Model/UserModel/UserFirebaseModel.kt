@@ -1,5 +1,8 @@
 package com.example.androidapp2024.Model.UserModel
 
+import android.util.Log
+import com.example.androidapp2024.Model.PostModel.Post
+import com.example.androidapp2024.Model.PostModel.PostFirebaseModel
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
@@ -29,6 +32,17 @@ class UserFirebaseModel {
     }
 
     fun addUser(user: User, onSuccess: () -> Unit, onFailure: (Exception) -> Unit) {
+         db.collection(USERS_COLLECTION_PATH)
+            .document(user.userId)
+            .set(user.json)
+            .addOnSuccessListener {
+                onSuccess()
+            }
+            .addOnFailureListener { exception ->
+                onFailure(exception)
+            }
+    }
+    fun updateUser(user: User, onSuccess: () -> Unit, onFailure: (Exception) -> Unit) {
         val userDocRef = db.collection(USERS_COLLECTION_PATH).document(user.userId)
         userDocRef.set(user, SetOptions.merge())
             .addOnSuccessListener {
@@ -38,4 +52,5 @@ class UserFirebaseModel {
                 onFailure(exception)
             }
     }
+
 }

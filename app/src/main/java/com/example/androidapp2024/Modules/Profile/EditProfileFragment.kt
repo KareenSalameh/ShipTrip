@@ -170,15 +170,4 @@ class EditProfileFragment : Fragment() {
             Toast.makeText(requireContext(), "No user is currently authenticated", Toast.LENGTH_SHORT).show()
         }
     }
-//    private fun updateProfileUI(user: User) {
-//        // Update EditText fields with user data
-//        etName.setText(user.name)
-//        etEmail.setText(user.email)
-//        etLocation.setText(user.location)
-//
-//        // Load the user image into ImageView using Glide or another image loading library
-//        Glide.with(this)
-//            .load(user.userImgUrl)
-////            .into(profileImage!!)
-//    }
 }

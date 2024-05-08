@@ -73,21 +73,15 @@ class PostViewHolder(
             editPostImageView?.visibility = View.GONE
             deletePostImageView?.visibility = View.GONE
         }
-//        editPostImageView?.setOnClickListener {
-//            findNavController(itemView).navigate(R.id.action_global_editPostFragment)
-//        }
+
         editPostImageView?.setOnClickListener {
             navigateToEdit()
         }
-
-
         floatingActionButton?.setOnClickListener {
             navigateToUserData()
         }
-
         deletePostImageView?.setOnClickListener {
             DeleteOnClick()
-
         }
     }
     private fun navigateToUserData(){
@@ -129,24 +123,6 @@ class PostViewHolder(
             alertDialog.show()
         }
     }
-
-//    private fun DeleteOnClick(){
-//        val postToDelete = post
-//        if (postToDelete != null) {
-//            Log.i("Delete","Post to delete ${postToDelete}")
-//            PostFirestore.getInstance().deletePost(postToDelete) {
-//                // Post deleted successfully
-//                // Remove the post from the local list
-//                posts = posts?.filter { it.postId != postToDelete.postId }
-//                // Notify the adapter about the data change
-//                this.posts= posts
-//                adapter?.posts = posts
-//                adapter?.notifyDataSetChanged()
-//                Log.i("Delete","Post to delete222 ${postToDelete}")
-//
-//            }
-//        }
-//    }
 
     private fun updatePayOrNotText(isChecked: Boolean) {
         payOrNotText?.setText(if (isChecked) "Yes" else "No")

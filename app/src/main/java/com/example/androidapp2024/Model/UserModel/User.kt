@@ -70,4 +70,16 @@ data class User(
                 LAST_UPDATED to FieldValue.serverTimestamp()
             )
         }
+    val updateJson: Map<String, Any>
+        get() {
+            return hashMapOf(
+                IMG_KEY to userImgUrl,
+                ID_KEY to userId,
+                NAME_KEY to name,
+                USER_URL_KEY to userImgUrl,
+                EMAIL_KEY to email,
+                LOCATION_KEY to location,
+                LAST_UPDATED to FieldValue.serverTimestamp()
+            )
+        }
 }

@@ -53,9 +53,7 @@ class MyPostsFragment : Fragment() {
             override fun onPostDeleted(post: Post) {
                 TODO("Not yet implemented")
             }
-
         }
-
     }
 
     private fun setupRecyclerView() {

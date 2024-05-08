@@ -19,7 +19,6 @@ class PostFirestore constructor()  {
 
     companion object {
        // val instance: PostFirestore = PostFirestore()
-
         @Volatile
         private var INSTANCE: PostFirestore? = null
 
@@ -31,40 +30,9 @@ class PostFirestore constructor()  {
             }
         }
     }
-
-
     interface GetAllPostListener{
         fun onComplete(posts: List<Post>)
     }
-//    fun getAllPosts(callback: (List<Post>) -> Unit) {
-//        val lastUpdated:Long = Post.lastUpdated
-//
-//        firebaseModel.getAllPosts(lastUpdated){list ->
-//            Log.i("TAG", "FireBase returned ${list.size}, lastUpdated: $lastUpdated")
-//
-//            executor.execute{
-//                var time = lastUpdated
-//                for(post in list){
-//                    database.PostDao().insert(post)
-//
-//                    post.lastUpdated?.let{
-//                        if(time < it){
-//                            time = post.lastUpdated ?:System.currentTimeMillis()
-//                        }
-//                    }
-//                    //update local data
-//                    Post.lastUpdated = time
-//                    val posts = database.PostDao().getAll()
-//
-//                    mainHandler.post{
-//                        callback(posts)
-//
-//                    }
-//                }
-//            }
-//        }
-//
-//    }
 
     fun getAllPosts(callback: (List<Post>) -> Unit) {
         firebaseModel.getAllPosts(0) { list ->
@@ -90,16 +58,10 @@ class PostFirestore constructor()  {
             callback()
         }
     }
-//
+
     fun getPostData(postId: String, onSuccess: (Post) -> Unit, onFailure: (Exception) -> Unit) {
         firebaseModel.getPostData(postId, onSuccess, onFailure)
-
     }
-
-    fun getPostById(postId: String, onSuccess: (Post) -> Unit, onFailure: (Exception) -> Unit) {
-        firebaseModel.getPostById(postId, onSuccess, onFailure)
-    }
-
     fun addPost(post: Post, callback: () -> Unit){
         firebaseModel.addPost(post, callback)
 

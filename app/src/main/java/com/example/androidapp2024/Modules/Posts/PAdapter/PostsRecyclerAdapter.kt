@@ -33,8 +33,6 @@ class PostsRecyclerAdapter(var posts: List<Post>?, private val isMyPostsFragment
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
         val post = posts?.get(position)
         holder.bind(post)
-       // holder.listener = listener // Pass the listener object to the ViewHolder
     }
-
 
 }

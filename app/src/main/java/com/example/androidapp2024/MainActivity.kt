@@ -13,11 +13,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Find the Login and Signup buttons
         val loginBtn: Button = findViewById(R.id.Loginbtn)
         val signupBtn: Button = findViewById(R.id.Signupbtn)
 
-        // Set OnClickListener for the Login button
         loginBtn.setOnClickListener {
             // Create an Intent to navigate to the LoginActivity
             val intent = Intent(this, LoginActivity::class.java)
@@ -25,7 +23,6 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
 
-        // Set OnClickListener for the Signup button
         signupBtn.setOnClickListener {
             // Create an Intent to navigate to the RegisterActivity
             val intent = Intent(this, RegisterActivity::class.java)
@@ -35,10 +32,3 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
-
-//
-//##delete the post that crashes when userdatafetch because unfound detials
-// change first fragmnt name and xml
-// change location type
-// complete mapping
-
